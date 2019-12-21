@@ -1,0 +1,97 @@
+
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	<a herf="#" id="site-menu" class="sidebar-toc toc-active">SITE MENU</a>
+	<a herf="#" id="article-menu" class="sidebar-toc">ARTICLE MENU</a>
+
+	<!-- 侧边目录栏 -->
+	<div id="site-toc">
+		<!-- 搜索栏 -->
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			<%
+				<!-- 将路径转换成 tree 目录结构 -->
+				const pathToTree = (input) => {
+					var output = [];
+					input.forEach(function(post){
+						<!-- 用来分割去掉时间的路径 -->
+						var chain = post.slug.split("/");
+						var currentNode = output;
+						for (var j = 0; j < chain.length; j++) {
+							if (chain[j] === '') {
+								break;
+							}
+							var wantedNode = chain[j];
+							var lastNode = currentNode;
+
+							for (var k = 0; k < currentNode.length; k++) {
+								if (currentNode[k].title == wantedNode) {
+									currentNode = currentNode[k].children;
+									break;
+								}
+							}
+
+							if (lastNode == currentNode) {
+								var newNode = currentNode[k] = { post: post, title: wantedNode, children: [] };
+								currentNode = newNode.children;
+							} else {
+								delete currentNode.children
+							}
+						}
+					});
+					return output;
+				}
+
+				<!-- console.log(output) -->
+			%>
+
+			<%
+				<!-- 递归输出侧边栏目录 tree -->
+				const showTree = (input) => {
+
+					<!-- 按 tile ascii 排序 -->
+					input.sort(function(a, b){
+						var len = a.title.length > b.title.length ? a.title.length : b.title.length;
+						for ( var i = 0; i < len; i++ ) {
+							res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
+							if ( res ) { return res }
+						}
+					});
+
+					<!-- 循环输出 html 结构 -->
+					input.forEach(function(node) {
+						if ( node.children == 0 ) {
+
+			%>
+							<ul>
+								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
+									<a href="<%- url_for(node.post.path) %><%-  %>">
+										<%- node.title %>
+									</a>
+								</li>
+							</ul>
+			<%
+						}
+						else {
+			%>
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										<%- node.title %>
+									</a>
+									<%- showTree(node.children) %>
+								</li>
+								
+							</ul>
+			<%
+						}
+					});
+				}
+
+				showTree(pathToTree(site.posts))
+			%>
+		</div>
+	</div>
+	<div id="article-toc" style="display: none;"></div>
+</div>

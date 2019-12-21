@@ -1,0 +1,24 @@
+<div id="index-list">
+	<% page.posts.each(function(post){ %>
+		<div class="index-li">
+			<a href="<%- url_for(post.path) %>">
+				<h2 class="index-title">
+					<%- post.slug.split("/")[post.slug.split("/").length-1] %>
+				</h2>
+				<div class="index-brief">
+					<%- post.more.replace(/<\/?.+?\/?>/g, "").substring(0, 150) %>
+					...
+				</div>
+				<p class="index-date"><%- date(page.date, "YYYY-MM-DD") %></p>
+			</a>
+		</div>	
+	<% }); %>
+</div>
+<div id="index-paginator">
+	<% if (page.total > 1){ %>
+		<%- paginator({
+		  prev_text: '<',
+		  next_text: '>'
+		}) %>
+	<% } %>
+</div>

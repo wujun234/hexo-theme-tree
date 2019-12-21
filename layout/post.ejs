@@ -1,0 +1,23 @@
+<h1 id="post-title">
+<%
+	if ( page.title == '' ) {
+%>
+		<%- page.slug.split("/")[page.slug.split("/").length-1] %>
+<%
+	}else {
+%>
+		<%- page.title %>
+<%
+	};
+%>
+</h1>
+<HR />
+<div>
+	<span id="post-author"><%- config.author %></span>
+	<span id="post-date"><%- date(page.date, "YYYY-MM-DD HH:mm:ss") %></span>
+</div>
+
+
+<div id="article">
+	<%- page.content %>
+</div>

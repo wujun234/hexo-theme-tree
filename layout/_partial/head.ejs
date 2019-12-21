@@ -1,0 +1,47 @@
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	<% 
+		var title = page.title; 
+		if ( title == '' ) {
+			var title = page.slug.split("/")[page.slug.split("/").length-1]
+		}else {
+			var title = page.title; 
+		};
+	%>
+	<title>
+	<% if (title){ %>
+		<%= title %> | 
+	<% } %> 
+	<%= config.title %>
+	</title>
+	
+	<!-- keywords,description -->
+	<% if (page.keywords){ %>
+		<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>" />
+	<% } else if (config.keywords){ %>
+		<meta name="keywords" content="<%= config.keywords %>" />
+	<% } %> <% if (page.description){ %>
+		<meta name="description" content="<%= page.description %>" />
+	<% } else if (config.description){ %>
+		<meta name="description" content="<%= config.description %>" />
+	<% } %>
+
+	<!-- favicon -->
+	<% if (theme.favicon){ %>
+	<%- favicon_tag(theme.favicon) %>
+	<% } %>
+  
+
+	<%- css('css/main.css') %>
+	<%- css('lib/font-awesome/css/font-awesome.min.css') %>
+	<%- css('/lib/highlight/darcula') %>
+
+	<%- js('/lib/highlight/highlight.pack.js') %>
+	<%- js('/lib/jquery-3.4.1.min.js') %>
+	<%- js('/lib/jquery.pjax.js') %>
+	<%- js('js/main.js') %>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
