@@ -4,7 +4,7 @@
 
 Demo：[wujun234.github.io](wujun234.github.io)
 
-![](./Tree.png)
+![](../Tree.png)
 
 ## 使用说明
 
