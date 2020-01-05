@@ -1,12 +1,8 @@
 
 <div id="sidebar">
 	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
-	<a herf="#" id="site-menu" class="sidebar-toc toc-active">SITE MENU</a>
-	<a herf="#" id="article-menu" class="sidebar-toc">ARTICLE MENU</a>
-
-	<!-- 侧边目录栏 -->
+	
 	<div id="site-toc">
-		<!-- 搜索栏 -->
 		<input id="search-input" class="search-input" type="text" placeholder="search...">
 		<div id="tree">
 			<%
@@ -42,7 +38,6 @@
 					return output;
 				}
 
-				<!-- console.log(output) -->
 			%>
 
 			<%
@@ -69,6 +64,7 @@
 										<%- node.title %>
 									</a>
 								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			<%
 						}
@@ -93,5 +89,4 @@
 			%>
 		</div>
 	</div>
-	<div id="article-toc" style="display: none;"></div>
 </div>

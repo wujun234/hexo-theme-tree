@@ -9,3 +9,22 @@ links:
   github: https://github.com/wujun234
   
 favicon: /favicon.ico
+
+# valine 
+valine:
+    # 评论
+    enableComment: true 
+    # 阅读量
+    enableCounter: true
+    # valine appID
+    appID: 
+    # valine appKey
+    appKey: 
+    placeholder: 请输入评论
+    avatar: retro
+
+# 是否开启“不蒜子”统计访问量
+busuanzi: true
+
+# 底部版权开始年份
+siteStartYear: 2019

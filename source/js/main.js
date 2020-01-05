@@ -8,7 +8,6 @@ $(document).ready(function () {
 	scrollToTop();
 	pageScroll();
 });
-
 // 页面滚动
 function pageScroll(){
     var start_hight = 0;
@@ -18,9 +17,9 @@ function pageScroll(){
 		start_hight = end_hight;
 		var $header = $('#header');
         if(distance > 0 && end_hight > 50){
-			$header.slideUp();
+			$header.hide();
 		}else if(distance < 0){
-			$header.slideDown();
+			$header.show();
 		}else{
 			return false;
 		}
@@ -31,8 +30,9 @@ function scrollToTop(){
 	$("#totop-toggle").on("click", function(e){
 		$("html").animate({scrollTop:0},200);
 	});
-	
-	// Mobile nav
+}
+// 侧面目录
+function switchTreeOrIndex(){
 	$('#sidebar-toggle').on('click', function () {
 		if ($('#sidebar').hasClass('on')){
 			scrollOff();
@@ -40,164 +40,129 @@ function scrollToTop(){
 			scrollOn();
 		}
 	});
-
+	$('body').click(function(e) {
+		if (window.matchMedia("(max-width: 1100px)").matches) {
+			var target = $(e.target);
+			if(!target.is('#sidebar *')) {
+				if ($('#sidebar').hasClass('on')){
+					scrollOff();
+				}
+			}
+		}
+	});
 	if (window.matchMedia("(min-width: 1100px)").matches) {
 		scrollOn();
 	}else{
 		scrollOff();
-	}
+	};
 }
 
-function scrollOn(){
-var $toggle = $('#sidebar-toggle'),
-		$sidebar = $('#sidebar'),
-		$content = $('#content'),
-		$header = $('#header'),
-		$footer = $('#footer'),
-		$togglei = $('#sidebar-toggle i');
-		
-	$togglei.addClass('fa-close');
-	$togglei.removeClass('fa-arrow-right');
-	$sidebar.addClass('on');
-	$sidebar.removeClass('off');
-	
-	if (window.matchMedia("(min-width: 1100px)").matches) {
-		$content.addClass('content-on');
-		$content.removeClass('content-off');
-		$header.addClass('header-on');
-		$header.removeClass('off');
-		$footer.addClass('header-on');
-		$footer.removeClass('off');
-	}
-}
-function scrollOff(){
-	var $toggle = $('#sidebar-toggle'),
-		$sidebar = $('#sidebar'),
-		$content = $('#content'),
-		$header = $('#header'),
-		$footer = $('#footer'),
-		$menu = $('#menu'),
-		$togglei = $('#sidebar-toggle i');
-		
-	$togglei.addClass('fa-arrow-right');
-	$togglei.removeClass('fa-close');
-	$sidebar.addClass('off');
-	$sidebar.removeClass('on');
-	
-	$content.addClass('off');
-	$content.removeClass('content-on');
-	$header.addClass('off');
-	$header.removeClass('header-on');
-	$footer.addClass('off');
-	$footer.removeClass('header-on');
-}
-// 切换目录与索引
-function switchTreeOrIndex(){
-	$("#site-menu").on("click", function(e){
-		$("#site-toc").show();
-		$("#site-menu").addClass('toc-active');
-		$("#article-toc").hide();
-		$("#article-menu").removeClass('toc-active');
-	});
-	$("#article-menu").on("click", function(e){
-		$("#article-toc").show();
-		$("#article-menu").addClass('toc-active');
-		$("#site-toc").hide();
-		$("#site-menu").removeClass('toc-active');
-	});
-}
-
+//生成文章目录
 function showArticleIndex() {
-	var h1List = h2List = h3List = h4List = h5List = [];
-	var labelList = $("#article").children();
-	for ( var i=0; i<labelList.length; i++ ) {
+	$(".article-toc").empty();
+	$(".article-toc").hide();	
+	$(".article-toc.active-toc").removeClass("active-toc");
+	$("#tree .active").next().addClass('active-toc');
+	
+	var labelList = $("#article-content").children();
+	var content = "<ul>";
+	var max_level = 4;
+	for ( var i = 0; i < labelList.length; i++ ) {
+		var level = 5;
 		if ( $(labelList[i]).is("h1") ) {
-			h2List = new Array();
-			h1List.push({node: $(labelList[i]), id: i, children: h2List});
+			level = 1;
+		}else if ( $(labelList[i]).is("h2") ) {
+			level = 2;
+		}else if ( $(labelList[i]).is("h3") ) {
+			level = 3;
+		}else if ( $(labelList[i]).is("h4") ) {
+			level = 4;
 		}
-
-		if ( $(labelList[i]).is("h2") ) {
-			h3List = new Array();
-			h2List.push({node: $(labelList[i]), id: i, children: h3List});
-		}
-
-		if ( $(labelList[i]).is("h3") ) {
-			h4List = new Array();
-			h3List.push({node: $(labelList[i]), id: i, children: h4List});
-		}
-		
-		if ( $(labelList[i]).is("h4") ) {
-			h5List = new Array();
-			h4List.push({node: $(labelList[i]), id: i, children: h5List});
-		}
-		
-		if ( $(labelList[i]).is("h5") ) {
-			h5List.push({node: $(labelList[i]), id: i, children: []});
+		if(level < max_level){
+			max_level = level;
 		}
 	}
-
-	// 闭包递归，返回树状 html 格式的文章目录索引
-	function show(tocList) {
-		var content = "<ul>";
-		tocList.forEach(function (toc) {
-			toc.node.before('<span class="anchor" id="_label'+toc.id+'"></span>');
-			if ( toc.children == 0 ) {
-				content += '<li><a href="#_label'+toc.id+'">'+toc.node.text()+'</a></li>';
-			}
-			else {
-				content += '<li><a href="#_label'+toc.id+'">'+toc.node.text()+'</a>'+show(toc.children)+'</li>';
-			}
-		});
-		content += "</ul>"
-		return content;
+	for ( var i = 0; i < labelList.length; i++ ) {
+		var level = 0;
+		if ( $(labelList[i]).is("h1") ) {
+			level = 1 - max_level + 1;
+		}else if ( $(labelList[i]).is("h2") ) {
+			level = 2 - max_level + 1;
+		}else if ( $(labelList[i]).is("h3") ) {
+			level = 3 - max_level + 1;
+		}else if ( $(labelList[i]).is("h4") ) {
+			level = 4 - max_level + 1;
+		}
+		if(level != 0){
+			$(labelList[i]).before('<span class="anchor" id="_label'+ i +'"></span>');
+			content += '<li class="level_'+level+'"><i class="fa fa-circle" aria-hidden="true"></i><a href="#_label'+ i +'"> '+ $(labelList[i]).text() +'</a></li>';
+		}
 	}
+	content += "</ul>"
 
-	// 最后组合成 div 方便 css 设计样式，添加到指定位置
-	$("#article-toc").empty();
-	$("#article-toc").append(show(h1List));
-
-	// 点击目录索引链接，动画跳转过去，不是默认闪现过去
-	$("#article-toc a").on("click", function(e){
-		e.preventDefault();
-		// 获取当前点击的 a 标签，并前触发滚动动画往对应的位置
-		var target = $(this.hash);
-		$("body, html").animate(
-			{'scrollTop': target.offset().top},
-			500
-		);
-	});
-
-	// 监听浏览器滚动条，当浏览过的标签，给他上色。
-	$(window).on("scroll", function(e){
-		var anchorList = $(".anchor");
-		anchorList.each(function(){
-			var tocLink = $('#article-toc a[href="#'+$(this).attr("id")+'"]');
-			var anchorTop = $(this).offset().top;
-			var windowTop = $(window).scrollTop();
-			if ( anchorTop <= windowTop+100 ) {
-				tocLink.addClass("read");
-			}
-			else {
-				tocLink.removeClass("read");
-			}
+	$(".article-toc.active-toc").append(content);
+	
+	if(null != $(".article-toc a") && 0 != $(".article-toc a").length){
+		
+		// 点击目录索引链接，动画跳转过去，不是默认闪现过去
+		$(".article-toc a").on("click", function(e){
+			e.preventDefault();
+			// 获取当前点击的 a 标签，并前触发滚动动画往对应的位置
+			var target = $(this.hash);
+			$("body, html").animate(
+				{'scrollTop': target.offset().top},
+				500
+			);
 		});
-	});
+
+
+		// 监听浏览器滚动条，当浏览过的标签，给他上色。
+		$(window).on("scroll", function(e){
+			var anchorList = $(".anchor");
+			anchorList.each(function(){
+				var tocLink = $('.article-toc a[href="#'+$(this).attr("id")+'"]');
+				var anchorTop = $(this).offset().top;
+				var windowTop = $(window).scrollTop();
+				if ( anchorTop <= windowTop+100 ) {
+					tocLink.addClass("read");
+				}
+				else {
+					tocLink.removeClass("read");
+				}
+			});
+		});	
+	}
+	$(".article-toc.active-toc").show();
+	$(".article-toc.active-toc").children().show();
 }
 
 function pjaxLoad(){
-	$(document).pjax('#tree a', '#content', {fragment:'#content', timeout:8000});
 	$(document).pjax('#menu a', '#content', {fragment:'#content', timeout:8000});
-	$(document).pjax('#index-list a', '#content', {fragment:'#content', timeout:8000});
+	$(document).pjax('#tree a', '#content', {fragment:'#content', timeout:8000});
+	$(document).pjax('#index a', '#content', {fragment:'#content', timeout:8000});
 	$(document).on({
 		"pjax:complete": function(e) {
 			$("pre code").each(function (i, block){
 				hljs.highlightBlock(block);
 			});
-			
 			// 添加 active
+			//$("#tree .active").removeClass("active");
+			//e.relatedTarget.parentNode.classList.add("active");
 			$("#tree .active").removeClass("active");
-			e.relatedTarget.parentNode.classList.add("active");
-
+			var title = $("#article-title").text().trim();
+			var searchResult = $("#tree li.file").find("a:contains('" + title + "')");
+			if ( searchResult.length ) {
+				$(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass("fa-plus-square-o");
+				$("#tree ul").css("display", "none");
+				if ( searchResult.length > 1 ) {
+					var categorie = $("#article-categories span:last a").html().trim();
+					if (typeof categorie != "undefined") {
+						searchResult = $("#tree li.directory a:contains('" + categorie + "')").siblings().find("a:contains('" + title + "')");
+					}
+				}
+				searchResult[0].parentNode.classList.add("active");
+				showActiveTree($("#tree .active"), true) 
+			}
 			showArticleIndex();
 		}
 	});
@@ -288,4 +253,45 @@ function showActiveTree(jqNode, isSiblings) {
 		}
 	}
 	jqNode.each(function(){ showActiveTree($(this).parent(), isSiblings); });
+}
+
+function scrollOn(){
+	var $sidebar = $('#sidebar'),
+		$content = $('#content'),
+		$header = $('#header'),
+		$footer = $('#footer'),
+		$togglei = $('#sidebar-toggle i');
+
+	$togglei.addClass('fa-close');
+	$togglei.removeClass('fa-arrow-right');
+	$sidebar.addClass('on');
+	$sidebar.removeClass('off');
+
+	if (window.matchMedia("(min-width: 1100px)").matches) {
+		$content.addClass('content-on');
+		$content.removeClass('content-off');
+		$header.addClass('header-on');
+		$header.removeClass('off');
+		$footer.addClass('header-on');
+		$footer.removeClass('off');
+	}
+}
+function scrollOff(){
+	var $sidebar = $('#sidebar'),
+		$content = $('#content'),
+		$header = $('#header'),
+		$footer = $('#footer'),
+		$togglei = $('#sidebar-toggle i');
+
+	$togglei.addClass('fa-arrow-right');
+	$togglei.removeClass('fa-close');
+	$sidebar.addClass('off');
+	$sidebar.removeClass('on');
+
+	$content.addClass('off');
+	$content.removeClass('content-on');
+	$header.addClass('off');
+	$header.removeClass('header-on');
+	$footer.addClass('off');
+	$footer.removeClass('header-on');
 }

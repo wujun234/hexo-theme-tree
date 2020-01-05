@@ -1,23 +1,112 @@
-<h1 id="post-title">
+<h1 id="article-title">
 <%
-	if ( page.title == '' ) {
-%>
-		<%- page.slug.split("/")[page.slug.split("/").length-1] %>
-<%
+	var pageTitle = '';
+	if ( is_post() ) {
+		pageTitle = page.slug.split("/")[page.slug.split("/").length-1];
 	}else {
-%>
-		<%- page.title %>
-<%
+		pageTitle = page.title ;
 	};
 %>
+	<%- pageTitle %>
 </h1>
-<HR />
-<div>
-	<span id="post-author"><%- config.author %></span>
-	<span id="post-date"><%- date(page.date, "YYYY-MM-DD HH:mm:ss") %></span>
+<div class="article-meta">
+	<% if (theme.valine.enableCounter){ %>
+		<span>
+			阅读量:<span id="<%= url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>"></span>
+		</span>
+	<% } %>
+	<span><%- config.author %></span>
+	<span><%- date(page.date, "YYYY-MM-DD HH:mm:ss") %></span>
+    <% if (page.categories) { %>
+		<div id="article-categories">
+            <% for (var j=0; j < page.categories.data.length; j++) { %>
+                <% if (page.categories.data[j] && page.categories.data[j].name) { %>
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/<%- page.categories.data[j].path %>"><%- page.categories.data[j].name %></a>
+                    </span>
+                <% } %>
+            <% } %>
+		</div>
+    <% } %>
 </div>
 
-
-<div id="article">
+<div id="article-content">
 	<%- page.content %>
 </div>
+
+<% if (is_post()){ %>
+    <div class="post-guide">
+        <div class="item left">
+            <% if (page.prev){ %>
+              <a href="<%- url_for(page.prev.path) %>">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  <%- page.prev.slug.split("/")[page.slug.split("/").length-1] %>
+              </a>
+            <% } %>
+        </div>
+        <div class="item right">
+            <% if (page.next){ %>
+              <a href="<%- url_for(page.next.path) %>">
+                <%- page.next.slug.split("/")[page.slug.split("/").length-1] %>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            <% } %>
+        </div>
+    </div>
+<% } %>
+
+<% if (theme.valine.enableComment){ %>
+	<div id="vcomments"></div>
+<% } %>
+
+<script>
+	<% if (theme.valine.enableComment){ %>
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '<%- theme.valine.appID %>',
+			appKey: '<%- theme.valine.appKey %>',
+			placeholder: '<%- theme.valine.placeholder %>',
+			avatar: '<%- theme.valine.avatar %>',
+			recordIP: false
+		})
+	<% } %>
+	<% if (theme.valine.enableCounter){ %>
+    // 显示次数
+		function showTime(Counter) {
+			var query = new AV.Query("Counter");
+			if($(".leancloud_visitors").length > 0){
+				var url = $(".leancloud_visitors").attr('id').trim();
+				// where field
+				query.equalTo("words", url);
+				// count
+				query.count().then(function (number) {
+					// There are number instances of MyClass where words equals url.
+					$(document.getElementById(url)).text(number?  number : '--');
+				}, function (error) {
+					// error is an instance of AVError.
+				});
+			}
+		}
+		// 追加pv
+		function addCount(Counter) {
+			var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'wujun234.github.io';
+			var Counter = AV.Object.extend("Counter");
+			var query = new Counter;
+			query.save({
+				words: url
+			}).then(function (object) {
+			})
+		}
+		$(function () {
+			var Counter = AV.Object.extend("Counter");
+			addCount(Counter);
+			showTime(Counter);
+		});
+	<% } %>
+</script>
