@@ -146,24 +146,25 @@ function pjaxLoad(){
 				hljs.highlightBlock(block);
 			});
 			// 添加 active
-			//$("#tree .active").removeClass("active");
-			//e.relatedTarget.parentNode.classList.add("active");
 			$("#tree .active").removeClass("active");
 			var title = $("#article-title").text().trim();
-			var searchResult = $("#tree li.file").find("a:contains('" + title + "')");
-			if ( searchResult.length ) {
-				$(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass("fa-plus-square-o");
-				$("#tree ul").css("display", "none");
-				if ( searchResult.length > 1 ) {
-					var categorie = $("#article-categories span:last a").html().trim();
-					if (typeof categorie != "undefined") {
-						searchResult = $("#tree li.directory a:contains('" + categorie + "')").siblings().find("a:contains('" + title + "')");
+			if ( title.length ) {
+				var searchResult = $("#tree li.file").find("a:contains('" + title + "')");
+				if ( searchResult.length ) {
+					$(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass("fa-plus-square-o");
+					$("#tree ul").css("display", "none");
+					if ( searchResult.length > 1 ) {
+						var categorie = $("#article-categories span:last a").html();
+						if (typeof categorie != "undefined") {
+							categorie = categorie.trim();
+							searchResult = $("#tree li.directory a:contains('" + categorie + "')").siblings().find("a:contains('" + title + "')");
+						}
 					}
+					searchResult[0].parentNode.classList.add("active");
+					showActiveTree($("#tree .active"), true) 
 				}
-				searchResult[0].parentNode.classList.add("active");
-				showActiveTree($("#tree .active"), true) 
+				showArticleIndex();
 			}
-			showArticleIndex();
 		}
 	});
 }

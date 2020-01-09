@@ -24,6 +24,9 @@
                     <span>
                         <i class="fa fa-folder" aria-hidden="true"></i>
                         <a href="/<%- page.categories.data[j].path %>"><%- page.categories.data[j].name %></a>
+						<% if (j < page.categories.data.length - 1) { %>
+							>
+						<% } %>
                     </span>
                 <% } %>
             <% } %>

@@ -18,6 +18,9 @@
                                     <span>
                                         <i class="fa fa-folder" aria-hidden="true"></i>
                                         <a href="/<%- post.categories.data[j].path %>"><%- post.categories.data[j].name %></a>
+										<% if (j < post.categories.data.length - 1) { %>
+											>
+										<% } %>
                                     </span>
                                 <% } %>
                             <% } %>
