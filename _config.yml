@@ -15,7 +15,7 @@ valine:
     # 评论
     enableComment: true 
     # 阅读量
-    enableCounter: true
+    enableCounter: false
     # valine appID
     appID: 
     # valine appKey

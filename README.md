@@ -1,6 +1,8 @@
 ## Hexo 主题 Tree
 
-一个简洁的主题，主要功能是 “树状导航” + “树状目录”，可选配“评论”和“阅读量”功能
+一个简洁的主题，主要功能是 “树状导航” + “树状目录”，可选配“评论”和“阅读量”功能。
+
+有问题欢迎及时联系，issues、邮件都行
 
 Demo：[wujun234.github.io](wujun234.github.io)
 
@@ -8,7 +10,7 @@ Demo：[wujun234.github.io](wujun234.github.io)
 
 ## 使用说明
 
-### 下载主题
+### 1 下载主题
 
 下载主题到 `hexo` 根目录中 `themes` 目录下
 ```
@@ -19,7 +21,7 @@ git clone https://github.com/wujun234/hexo-theme-tree.git  themes/tree
 ```
 theme: tree
 ```
-### 配置主题
+### 2 配置主题
 
 如果要使用 `valine` 的评论及阅读量功能，需要在 `themes/tree` 路径下的 `_config.yml` 文件中，填写自己申请的 `leancloud` 账户下面的 `appID` 和 `appKey`
 
@@ -36,6 +38,17 @@ valine:
     enableCounter: false
 ```
 
-### 推荐插件
+### 3 导航栏和图标
+- 导航栏：当前没有配置化，需要修改`themes/tree/layout/_partial` 路径下的 `header.ejs` 文件
+- 图标：替换`themes/tree/source` 路径下的`favicon.ico` 文件
+
+### 4 about 页
+在 `source`路径下，与`_posts`文件夹平行，建立一个`about`页
+
+## 其他
+###  推荐插件
 
 推荐安装 [Markdown-it](https://github.com/markdown-it/markdown-it) 插件渲染 `Markdown`
+
+### 访问管理
+我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 <head> 里加一个 <script> 快就行了
