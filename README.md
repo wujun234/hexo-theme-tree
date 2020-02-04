@@ -45,10 +45,13 @@ valine:
 ### 4 about 页
 在 `source`路径下，与`_posts`文件夹平行，建立一个`about`页
 
+### 5 文章树、目录树
+页面左侧的文章树是根据 source 文件夹里的文章和文件夹生成的，目录树是根据文章中的标题生成的
+
 ## 其他
 ###  推荐插件
 
 推荐安装 [Markdown-it](https://github.com/markdown-it/markdown-it) 插件渲染 `Markdown`
 
 ### 访问管理
-我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 <head> 里加一个 <script> 快就行了
+我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 '<head>' 里加一个 '<script>' 块就行了
