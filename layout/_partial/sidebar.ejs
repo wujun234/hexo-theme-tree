@@ -46,10 +46,15 @@
 
 					<!-- 按 tile ascii 排序 -->
 					input.sort(function(a, b){
-						var len = a.title.length > b.title.length ? a.title.length : b.title.length;
+						var len = a.title.length <= b.title.length ? a.title.length : b.title.length;
 						for ( var i = 0; i < len; i++ ) {
 							res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
 							if ( res ) { return res }
+						}
+						if(a.title.length <= b.title.length){
+							return true;
+						}else{
+							return false;
 						}
 					});
 
