@@ -53,5 +53,14 @@ valine:
 
 推荐安装 [Markdown-it](https://github.com/markdown-it/markdown-it) 插件渲染 `Markdown`
 
+替换之后注意将 \_config.yml 中 hexo 默认的 Markdown 配置改一下
+```
+highlight:
+  enable: false
+  line_number: false
+  auto_detect: false
+  tab_replace: ''
+```
+
 ### 访问管理
 我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 '<head>' 里加一个 '<script>' 块就行了
