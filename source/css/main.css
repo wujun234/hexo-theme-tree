@@ -322,7 +322,8 @@ a {
 	border-left: .25em solid #dfe2e5;
 }
 #article-content p {
-	line-height: 30px
+	line-height: 20px;
+	margin-bottom: 10px;
 }
 #article-content ul code,
 #article-content ol code,
