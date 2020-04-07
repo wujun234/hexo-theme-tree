@@ -45,6 +45,12 @@ valine:
 ### 4 about 页
 在 `source`路径下，与`_posts`文件夹平行，建立一个`about`页
 
+执行
+```
+hexo new page --path about/index "About"
+```
+参考：https://hexo.io/zh-cn/docs/commands.html#new
+
 ### 5 文章树、目录树
 页面左侧的文章树是根据 source 文件夹里的文章和文件夹生成的，目录树是根据文章中的标题生成的
 
