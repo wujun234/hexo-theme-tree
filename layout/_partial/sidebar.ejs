@@ -66,6 +66,7 @@
 			%>
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
+									<i class="fa fa-angle-right"></i> 
 									<a href="<%- url_for(node.post.path) %><%-  %>">
 										<%- node.title %> &nbsp;
 									</a>
