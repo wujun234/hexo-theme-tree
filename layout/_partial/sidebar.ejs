@@ -3,6 +3,9 @@
 	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
 	<div id="site-toc">
 		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<% if (theme.searchAll) { %>
+    <div id="local-search-result" style="display: none;"></div>
+    <% } %>
 		<div id="tree">
 			<%
 				<!-- 将路径转换成 tree 目录结构 -->
@@ -66,14 +69,16 @@
 			%>
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
-									<i class="fa fa-angle-right"></i> 
+									<i class="fa fa-angle-right"></i>
 									<a href="<%- url_for(node.post.path) %><%-  %>">
-										<%- node.title %> &nbsp;
+										<%- node.title %><% if (theme.expandAll) { %>  &nbsp;<% } %>
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
 								<!-- 循环输出 隐藏toc 结构，便于搜索toc -->
+								<% if (theme.searchTOC) { %>
 								<div style="display: none;"><%- toc(node.post.content) %></div>
+								<% } %>
 							</ul>
 			<%
 						}
