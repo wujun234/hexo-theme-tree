@@ -60,10 +60,13 @@ function switchTreeOrIndex(){
 //生成文章目录
 function showArticleIndex() {
 	$(".article-toc").empty();
-	$(".article-toc").hide();	
+	$(".article-toc").hide();
 	$(".article-toc.active-toc").removeClass("active-toc");
 	$("#tree .active").next().addClass('active-toc');
-	
+
+	$(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-right");
+	$(".file.active i").removeClass("fa-angle-right").addClass('fa-angle-down');
+
 	var labelList = $("#article-content").children();
 	var content = "<ul>";
 	var max_level = 4;
@@ -101,9 +104,9 @@ function showArticleIndex() {
 	content += "</ul>"
 
 	$(".article-toc.active-toc").append(content);
-	
+
 	if(null != $(".article-toc a") && 0 != $(".article-toc a").length){
-		
+
 		// 点击目录索引链接，动画跳转过去，不是默认闪现过去
 		$(".article-toc a").on("click", function(e){
 			e.preventDefault();
@@ -130,7 +133,7 @@ function showArticleIndex() {
 					tocLink.removeClass("read");
 				}
 			});
-		});	
+		});
 	}
 	$(".article-toc.active-toc").show();
 	$(".article-toc.active-toc").children().show();
@@ -161,7 +164,7 @@ function pjaxLoad(){
 						}
 					}
 					searchResult[0].parentNode.classList.add("active");
-					showActiveTree($("#tree .active"), true) 
+					showActiveTree($("#tree .active"), true)
 				}
 				showArticleIndex();
 			}
@@ -195,11 +198,26 @@ function serachTree() {
 		}
 		// 有值就搜索，并且展开父目录
 		else {
-			$(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");
-			$("#tree ul").css("display", "none");
-			var searchResult = $("#tree li").find("a:contains('" + inputContent + "')");
-			if ( searchResult.length ) { 
-				showActiveTree(searchResult.parent(), false) 
+				if ($('#local-search-result').length>0 && inputContent.length === 3 && (inputContent.substr(0,3).toLowerCase() === 'in:' || inputContent.substr(0,3).toLowerCase()==='in：')) {
+						// 全文搜索
+						$.getScript('/js/search.js', function () {
+								searchFunc("/search.xml", 'search-input', 'local-search-result');
+						})
+				}
+			  if ($('#local-search-result').length>0 && inputContent.length>3 && (inputContent.substr(0,3).toLowerCase() === 'in:' || inputContent.substr(0,3).toLowerCase()==='in：')) {
+					$('#local-search-result').show();
+					$("#tree ul").css("display", "none");
+
+					searchAll(inputContent.substr(3))
+			} else {
+					$('#local-search-result').hide();
+
+					$(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");
+					$("#tree ul").css("display", "none");
+					var searchResult = $("#tree li").find("a:contains('" + inputContent + "')");
+					if ( searchResult.length ) {
+						showActiveTree(searchResult.parent(), false)
+					}
 			}
 		}
 	});
@@ -247,7 +265,7 @@ function showActiveTree(jqNode, isSiblings) {
 		// 这个 isSiblings 是给搜索用的
 		// true 就显示开同级兄弟节点
 		// false 就是给搜索用的，值需要展示它自己就好了，不展示兄弟节点
-		if ( isSiblings ) { 
+		if ( isSiblings ) {
 			jqNode.siblings().css("display", "block");
 			jqNode.siblings("a").css("display", "inline");
 			jqNode.siblings("a").find(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");

@@ -1,9 +1,11 @@
 
 <div id="sidebar">
 	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
-	
 	<div id="site-toc">
 		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<% if (theme.searchAll) { %>
+    <div id="local-search-result" style="display: none;"></div>
+    <% } %>
 		<div id="tree">
 			<%
 				<!-- 将路径转换成 tree 目录结构 -->
@@ -44,18 +46,20 @@
 				<!-- 递归输出侧边栏目录 tree -->
 				const showTree = (input) => {
 
-					<!-- 按 tile ascii 排序 -->
-					input.sort(function(a, b){
-						var len = a.title.length <= b.title.length ? a.title.length : b.title.length;
-						for ( var i = 0; i < len; i++ ) {
-							res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
-							if ( res ) { return res }
-						}
-						if(a.title.length <= b.title.length){
-							return true;
-						}else{
-							return false;
-						}
+					<!-- 按tile ascii排序 -->
+					input.sort(function(a, b) {
+					    var len = a.title.length <= b.title.length ? a.title.length: b.title.length;
+					    for (var i = 0; i < len; i++) {
+					        res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
+					        if (res) {
+					            return res
+					        }
+					    }
+					    if (a.title.length <= b.title.length) {
+					        return true;
+					    } else {
+					        return false;
+					    }
 					});
 
 					<!-- 循环输出 html 结构 -->
@@ -65,11 +69,16 @@
 			%>
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
+									<i class="fa fa-angle-right"></i>
 									<a href="<%- url_for(node.post.path) %><%-  %>">
-										<%- node.title %>
+										<%- node.title %><% if (theme.expandAll) { %>  &nbsp;<% } %>
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
+								<!-- 循环输出 隐藏toc 结构，便于搜索toc -->
+								<% if (theme.searchTOC) { %>
+								<div style="display: none;"><%- toc(node.post.content) %></div>
+								<% } %>
 							</ul>
 			<%
 						}
@@ -83,7 +92,7 @@
 									</a>
 									<%- showTree(node.children) %>
 								</li>
-								
+
 							</ul>
 			<%
 						}
