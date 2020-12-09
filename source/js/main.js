@@ -203,6 +203,18 @@ function serachTree() {
 			}
 		}
 	});
+
+	$("#search-input").on("keyup", function(e){
+		e.preventDefault();
+		if(event.keyCode ==13){
+			var inputContent = e.currentTarget.value;
+
+			if ( inputContent.length === 0 ) {
+			}else {
+				window.open(searchEngine+inputContent+"%20site:"+homeHost, "_blank");
+			}
+		}
+	});
 }
 
 // 点击目录事件

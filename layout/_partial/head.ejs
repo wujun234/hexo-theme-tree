@@ -33,7 +33,20 @@
 	<% if (theme.favicon){ %>
 	<%- favicon_tag(theme.favicon) %>
 	<% } %>
-  
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "<%- theme.searchEngine %>";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "<%- theme.homeHost %>";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
 
 	<%- css('css/main.css') %>
 	<%- css('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css') %>

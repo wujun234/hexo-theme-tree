@@ -17,9 +17,9 @@ valine:
     # 阅读量
     enableCounter: false
     # valine appID
-    appID: 
+    appID:
     # valine appKey
-    appKey: 
+    appKey:
     placeholder: 请输入评论
     avatar: retro
 
@@ -28,3 +28,12 @@ busuanzi: true
 
 # 底部版权开始年份
 siteStartYear: 2019
+
+####### 站外搜索配置 #####
+# 站点如果【被搜索引擎收录】，可以配置通过搜索引擎全站搜索
+# searchEngine：搜索引擎，不配置则默认为谷歌，可替换为百度等其他搜索引擎的搜索 URL
+#   https://www.baidu.com/s?wd=
+#   https://www.google.com/search?q=
+# homeHost：要搜索的站点域名，不配置默认取当前页面的域名
+searchEngine: https://www.google.com/search?q=
+homeHost: wujun234.github.io
