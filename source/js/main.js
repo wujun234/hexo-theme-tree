@@ -177,6 +177,7 @@ function pjaxLoad() {
         }
         showArticleIndex();
       }
+      wrapImageWithFancyBox();
     }
   });
 }
