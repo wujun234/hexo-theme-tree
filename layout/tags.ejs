@@ -1,25 +1,21 @@
 <h1 id="article-title">
-<%
-	var pageTitle = '';
-	if ( is_post() ) {
-		pageTitle = page.slug.split("/")[page.slug.split("/").length-1];
-	}else {
-		pageTitle = page.title ;
-	};
-%>
-	<%- pageTitle %>
+	<i class="fa fa-tags" aria-hidden="true"></i>TAGS
 </h1>
+<h2 id="article-title">
+	目前共计 <%- site.tags.data.length %> 个标签
+</h2>
 
 
 <div id="article-content">
-            <% for (var j=0; j < site.tags.data.length; j++) { %>
-                <% if (site.tags.data[j] && site.tags.data[j].name) { %>
-                    <span>
-                        <a href="/<%- site.tags.data[j].path %>"><%- site.tags.data[j].name %></a>
-						<% if (j < site.tags.data.length - 1) { %>
-							>
-						<% } %>
-                    </span>
-                <% } %>
-            <% } %>
+	<ul>
+      <% for (var j=0; j < site.tags.data.length; j++) { %>
+          <% if (site.tags.data[j] && site.tags.data[j].name) { %>
+            <li class="menu-item">
+                <span>
+                      <a href="/<%- site.tags.data[j].path %>"><%- site.tags.data[j].name %>(<%- site.tags.data[j].length %>)</a>
+                </span>
+            </li>
+          <% } %>
+      <% } %>
+	</ul>
 </div>

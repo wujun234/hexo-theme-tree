@@ -11,13 +11,19 @@ var _hmt = _hmt || [];
 <header id="header">
     <a id="title" href="<%= url_for() %>" class="logo"><%- config.title %></a>
 
-	  <ul id="menu">
+	<ul id="menu">
 		<li class="menu-item">
 			<a href="/about" class="menu-item-link">ABOUT</a>
 		</li>
 	<% if (theme.tags){ %>
 		<li class="menu-item">
-			<a href="/tags" class="menu-item-link">TAGS<% if (site.tags){ %>(<%- site.tags.length %>)<% } %></a>
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+	<% } %>
+
+	<% if (theme.categories){ %>
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
 		</li>
 	<% } %>
 

@@ -23,11 +23,12 @@
             <% for (var j=0; j < page.categories.data.length; j++) { %>
                 <% if (page.categories.data[j] && page.categories.data[j].name) { %>
                     <span>
-<!--                         <i class="fa fa-folder" aria-hidden="true"></i> -->
+                        <i class="fa fa-folder" aria-hidden="true">
                         <a href="/<%- page.categories.data[j].path %>"><%- page.categories.data[j].name %></a>
-						<% if (j < page.categories.data.length - 1) { %>
-							>
-						<% } %>
+                        </i>
+                      <% if (j < page.categories.data.length - 1) { %>
+                        >
+                      <% } %>
                     </span>
                 <% } %>
             <% } %>
@@ -38,11 +39,9 @@
             <% for (var j=0; j < page.tags.data.length; j++) { %>
                 <% if (page.tags.data[j] && page.tags.data[j].name) { %>
                     <span>
-<!--                         <i class="fa fa-folder" aria-hidden="true"></i> -->
+                        <i class="fa fa-tag" aria-hidden="true">
                         <a href="/<%- page.tags.data[j].path %>"><%- page.tags.data[j].name %></a>
-						<% if (j < page.tags.data.length - 1) { %>
-							>
-						<% } %>
+                        </i>
                     </span>
                 <% } %>
             <% } %>

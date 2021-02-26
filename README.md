@@ -81,6 +81,27 @@ layout: "tags"
 ```
 tags: true
 ```
+
+### 7 categories 页
+在 `source`路径下，与`_posts`文件夹平行，建立一个`categories`页
+
+执行
+```
+hexo new page "categories"
+```
+编辑 source/tags/index.md
+```
+---
+title: categories
+date: 2021-02-26 16:36:55
+type: "categories"
+layout: "categories"
+---
+```
+修改 `hexo` 根目录的 `_config.yml`，添加
+```
+categories: true
+```
 ## 其他
 ###  推荐插件
 
