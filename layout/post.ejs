@@ -17,12 +17,13 @@
 	<% } %>
 	<span><%- config.author %></span>
 	<span><%- date(page.date, "YYYY-MM-DD HH:mm:ss") %></span>
-    <% if (page.categories) { %>
 		<div id="article-categories">
+    <% if (page.categories) { %>
+		<span>Categories：</span>
             <% for (var j=0; j < page.categories.data.length; j++) { %>
                 <% if (page.categories.data[j] && page.categories.data[j].name) { %>
                     <span>
-                        <i class="fa fa-folder" aria-hidden="true"></i>
+<!--                         <i class="fa fa-folder" aria-hidden="true"></i> -->
                         <a href="/<%- page.categories.data[j].path %>"><%- page.categories.data[j].name %></a>
 						<% if (j < page.categories.data.length - 1) { %>
 							>
@@ -30,8 +31,24 @@
                     </span>
                 <% } %>
             <% } %>
-		</div>
     <% } %>
+
+    <% if (page.tags) { %>
+		<span>Tags：</span>
+            <% for (var j=0; j < page.tags.data.length; j++) { %>
+                <% if (page.tags.data[j] && page.tags.data[j].name) { %>
+                    <span>
+<!--                         <i class="fa fa-folder" aria-hidden="true"></i> -->
+                        <a href="/<%- page.tags.data[j].path %>"><%- page.tags.data[j].name %></a>
+						<% if (j < page.tags.data.length - 1) { %>
+							>
+						<% } %>
+                    </span>
+                <% } %>
+            <% } %>
+    <% } %>
+		</div>
+
 </div>
 
 <div id="article-content">

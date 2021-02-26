@@ -2,9 +2,6 @@ title: tree
 
 author: 吴俊
 
-menus: 
-  关于: /about
-
 links:
   github: https://github.com/wujun234
   
@@ -37,3 +34,5 @@ siteStartYear: 2019
 # homeHost：要搜索的站点域名，不配置默认取当前页面的域名
 searchEngine: https://www.google.com/search?q=
 homeHost: wujun234.github.io
+
+#tags: true

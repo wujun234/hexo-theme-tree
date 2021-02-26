@@ -1,0 +1,25 @@
+<h1 id="article-title">
+<%
+	var pageTitle = '';
+	if ( is_post() ) {
+		pageTitle = page.slug.split("/")[page.slug.split("/").length-1];
+	}else {
+		pageTitle = page.title ;
+	};
+%>
+	<%- pageTitle %>
+</h1>
+
+
+<div id="article-content">
+            <% for (var j=0; j < site.tags.data.length; j++) { %>
+                <% if (site.tags.data[j] && site.tags.data[j].name) { %>
+                    <span>
+                        <a href="/<%- site.tags.data[j].path %>"><%- site.tags.data[j].name %></a>
+						<% if (j < site.tags.data.length - 1) { %>
+							>
+						<% } %>
+                    </span>
+                <% } %>
+            <% } %>
+</div>
