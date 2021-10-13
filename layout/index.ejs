@@ -3,7 +3,7 @@
 		<div class="index-li">
 			<a href="<%- url_for(post.path) %>">
 				<h2 class="index-title">
-					<%- post.slug.split("/")[post.slug.split("/").length-1] %>
+					<%- post.title || post.slug.split("/")[post.slug.split("/").length-1] %>
 				</h2>
 				<div class="index-brief">
 					<%- post.more.replace(/<\/?.+?\/?>/g, "").substring(0, 150) %>

@@ -103,6 +103,11 @@ layout: "categories"
 categories: true
 ```
 ## 其他
+### 图片
+最开始将图片放在 source 中，使用 github 的相对地址，但是本地 md 编辑器不能识别这样的图片，
+
+后续选择了 picgo，用 github 做图床：https://picgo.github.io/PicGo-Doc/
+
 ###  推荐插件
 
 推荐安装 [Markdown-it](https://github.com/markdown-it/markdown-it) 插件渲染 `Markdown`

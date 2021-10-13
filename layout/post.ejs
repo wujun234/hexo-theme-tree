@@ -1,13 +1,5 @@
 <h1 id="article-title">
-<%
-	var pageTitle = '';
-	if ( is_post() ) {
-		pageTitle = page.slug.split("/")[page.slug.split("/").length-1];
-	}else {
-		pageTitle = page.title ;
-	};
-%>
-	<%- pageTitle %>
+	<%- page.title || page.slug.split("/")[page.slug.split("/").length-1] %>
 </h1>
 <div class="article-meta">
 	<% if (theme.valine.enableCounter){ %>
@@ -60,14 +52,14 @@
             <% if (page.prev){ %>
               <a href="<%- url_for(page.prev.path) %>">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  <%- page.prev.slug.split("/")[page.slug.split("/").length-1] %>
+                  <%- page.prev.title || page.prev.slug.split("/")[page.prev.slug.split("/").length-1] %>
               </a>
             <% } %>
         </div>
         <div class="item right">
             <% if (page.next){ %>
               <a href="<%- url_for(page.next.path) %>">
-                <%- page.next.slug.split("/")[page.slug.split("/").length-1] %>
+                <%- page.next.title || page.next.slug.split("/")[page.prev.slug.split("/").length-1] %>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             <% } %>
