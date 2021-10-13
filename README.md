@@ -55,7 +55,7 @@ hexo new page --path about/index "About"
 页面左侧的文章树是根据 source 文件夹里的文章和文件夹生成的，目录树是根据文章中的标题生成的
 
 ### 6 全站搜索
-修改 `hexo` 根目录的 `_config.yml`
+修改主题 `tree` 目录的 `_config.yml`
 
 站点如果【被搜索引擎收录】，可以配置通过搜索引擎全站搜索
 - searchEngine: 你选择的搜索引擎搜索 url，默认谷歌，例如"https://www.baidu.com/s?wd="、"https://www.google.com/search?q="
@@ -77,7 +77,7 @@ type: "tags"
 layout: "tags"
 ---
 ```
-修改 `hexo` 根目录的 `_config.yml`，添加
+修改主题 `tree` 目录的 `_config.yml`，添加
 ```
 tags: true
 ```
@@ -98,7 +98,7 @@ type: "categories"
 layout: "categories"
 ---
 ```
-修改 `hexo` 根目录的 `_config.yml`，添加
+修改主题 `tree` 目录的 `_config.yml`，添加
 ```
 categories: true
 ```
