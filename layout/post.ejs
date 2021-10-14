@@ -75,16 +75,16 @@
 	<% if (theme.valine.enableComment){ %>
 		// 评论
 		new Valine({
-			av: AV,
 			el: '#vcomments',
-			notify: false,
-			verify: false,
-			path: window.location.pathname,
 			appId: '<%- theme.valine.appID %>',
 			appKey: '<%- theme.valine.appKey %>',
 			placeholder: '<%- theme.valine.placeholder %>',
+			path: window.location.pathname,
 			avatar: '<%- theme.valine.avatar %>',
-			recordIP: false
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
 		})
 	<% } %>
 	<% if (theme.valine.enableCounter){ %>
