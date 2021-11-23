@@ -41,4 +41,4 @@ homeHost: wujun234.github.io
 # 左侧导航栏，用文件名还是文章名
 sidebar:
   # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
-  usePostTitle: true
+  usePostTitle: false

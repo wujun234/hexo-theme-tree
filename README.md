@@ -52,7 +52,15 @@ hexo new page --path about/index "About"
 参考：https://hexo.io/zh-cn/docs/commands.html#new
 
 ### 5 文章树、目录树
-页面左侧的文章树是根据 source 文件夹里的文章和文件夹生成的，目录树是根据文章中的标题生成的
+页面左侧的文章树是根据 source 文件夹里的文章和文件夹生成的
+
+修改主题 `tree` 目录的 `_config.yml`, `sidebar.usePostTitle`可以控制目录树中展示文件名还是文章名
+```
+# 左侧导航栏，用文件名还是文章名
+sidebar:
+  # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
+  usePostTitle: true
+```
 
 ### 6 全站搜索
 修改主题 `tree` 目录的 `_config.yml`
