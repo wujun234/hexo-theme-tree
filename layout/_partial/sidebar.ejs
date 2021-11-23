@@ -66,7 +66,11 @@
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
 									<a href="<%- url_for(node.post.path) %><%-  %>">
-										<%- node.title %>
+                     <% if (theme.sidebar.usePostTitle) { %>
+										    <%- node.post.title || node.title %>
+                     <% } else { %>
+										    <%- node.title %>
+                     <% } %>
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
