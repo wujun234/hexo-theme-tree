@@ -110,6 +110,27 @@ layout: "categories"
 ```
 categories: true
 ```
+
+### 8 pjax
+主题默认支持了 pjax 跳转，但是在网速慢的时候，pjax 因为没有页面刷新的交互，可能会让人误以为点击没响应。
+
+如果要去掉 pjax 特性，注释掉主题 'source/js/main.js' 文件中的 'pjaxLoad()' 方法就好。
+
+```
+$(document).ready(function () {
+  hljs.initHighlightingOnLoad();
+  clickTreeDirectory();
+  serachTree();
+  // pjaxLoad();
+  showArticleIndex();
+  switchTreeOrIndex();
+  scrollToTop();
+  pageScroll();
+  wrapImageWithFancyBox();
+});
+```
+
+
 ## 其他
 ### 图片
 最开始将图片放在 source 中，使用 github 的相对地址，但是本地 md 编辑器不能识别这样的图片，
