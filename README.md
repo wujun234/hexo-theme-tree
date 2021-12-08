@@ -69,7 +69,7 @@ sidebar:
 - searchEngine: 你选择的搜索引擎搜索 url，默认谷歌，例如"https://www.baidu.com/s?wd="、"https://www.google.com/search?q="
 - homeHost: 你的域名，默认当前页面的域名
 
-### 6 tags 页
+### 7 tags 页
 在 `source`路径下，与`_posts`文件夹平行，建立一个`tags`页
 
 执行
@@ -90,7 +90,7 @@ layout: "tags"
 tags: true
 ```
 
-### 7 categories 页
+### 8 categories 页
 在 `source`路径下，与`_posts`文件夹平行，建立一个`categories`页
 
 执行
@@ -111,12 +111,12 @@ layout: "categories"
 categories: true
 ```
 
-### 8 pjax
+### 9 pjax
 主题默认支持了 pjax 跳转，但是在网速慢的时候，pjax 因为没有页面刷新的交互，可能会让人误以为点击没响应。
 
 如果要去掉 pjax 特性，注释掉主题 'source/js/main.js' 文件中的 'pjaxLoad()' 方法就好。
 
-```
+```js
 $(document).ready(function () {
   hljs.initHighlightingOnLoad();
   clickTreeDirectory();
