@@ -49,20 +49,46 @@
 
 
 	<%- css('css/main.css') %>
-	<%- css('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css') %>
-	<%- css('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css') %>
-	<%- css('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
-
-	<%- js('https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js') %>
-	<%- js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js') %>
-	<%- js('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js') %>
-	<%- js('https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js') %>
 	<%- js('js/main.js') %>
-	<% if (theme.valine){ %>
-		<%- js('https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js') %>
-		<%- js('https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js') %>
+
+	<% if (theme.useLocalJsCss){ %>
+
+	  <%- css('css/font-awesome.min.css') %>
+	  <%- css('css/darcula.min.css') %>
+	  <%- css('css/jquery.fancybox.min.css') %>
+
+	  <%- js('js/jquery.min.js') %>
+	  <%- js('js/jquery.fancybox.min.js') %>
+	  <%- js('js/highlight.min.js') %>
+	  <%- js('js/jquery.pjax.min.js') %>
+
+    <% if (theme.valine){ %>
+	    <%- js('js/av-min.js') %>
+	    <%- js('js/Valine.min.js') %>
+    <% } %>
+
+    <% if (theme.busuanzi){ %>
+	    <%- js('js/busuanzi.pure.mini.js') %>
+    <% } %>
+	<% } else {%>
+
+    <%- css('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css') %>
+    <%- css('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css') %>
+    <%- css('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
+
+    <%- js('https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js') %>
+    <%- js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js') %>
+    <%- js('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js') %>
+    <%- js('https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js') %>
+
+    <% if (theme.valine){ %>
+      <%- js('https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js') %>
+      <%- js('https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js') %>
+    <% } %>
+
+    <% if (theme.busuanzi){ %>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <% } %>
 	<% } %>
-	<% if (theme.busuanzi){ %>
-		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<% } %>
+
 </head>
