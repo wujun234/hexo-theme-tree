@@ -42,6 +42,3 @@ homeHost: wujun234.github.io
 sidebar:
   # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
   usePostTitle: false
-
-# 是否使用本地第三方 js、css 文件, false 则使用远程 cdn（可能加速，也可能被墙）
-useLocalJsCss: false
