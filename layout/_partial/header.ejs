@@ -32,10 +32,14 @@ var _hmt = _hmt || [];
 				UidGenerator
 			</a>
 		</li>
+
+	<% if (theme.links && theme.links.github) { %>
 		<li class="menu-item">
-			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+			<a href='<%- theme.links.github %>' class="menu-item-link" target="_blank">
 				<i class="fa fa-github fa-2x"></i>
 			</a>
 		</li>
+	<% } %>
+
 	</ul>
 </header>
