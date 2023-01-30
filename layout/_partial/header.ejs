@@ -27,11 +27,17 @@ var _hmt = _hmt || [];
 		</li>
 	<% } %>
 
-		<li class="menu-item">
-			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
-				UidGenerator
-			</a>
-		</li>
+	<% if (theme.links && theme.links.custom) { %>
+		<% var links = theme.links.custom %>
+		<% for (var i = 0; i < links.length; i++) { %>
+			<li class="menu-item">
+				<a href='<%- links[i]['URL'] %>' class="menu-item-link" target="_blank">
+					<%- links[i]['name'] %>
+				</a>
+			</li>
+		<% } %>
+	<% } %>
+
 		<li class="menu-item">
 			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
 				<i class="fa fa-github fa-2x"></i>

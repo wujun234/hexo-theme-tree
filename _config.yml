@@ -4,6 +4,9 @@ author: 吴俊
 
 links:
   github: https://github.com/wujun234
+  custom:
+    - name: UidGenerator
+      URL: https://github.com/wujun234/uid-generator-spring-boot-starter
   
 favicon: /favicon.ico
 
