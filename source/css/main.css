@@ -155,7 +155,8 @@ a {
 	list-style: none;
 	white-space: nowrap;
 }
-#sidebar ul li a {
+#sidebar ul li a,
+#sidebar ul li span {
 	color: #999;
 	font-size: 14px;
 }

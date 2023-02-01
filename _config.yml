@@ -45,3 +45,8 @@ homeHost: wujun234.github.io
 sidebar:
   # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
   usePostTitle: false
+  # 标题锚点前缀。默认是实心圆：'<i class="fa fa-circle" aria-hidden="true"></i>'
+  # 可以换成"#"：
+  # headerPrefix: '<span>#</span>'
+  # 也可以把前缀去掉：
+  # headerPrefix: '<span></span>'

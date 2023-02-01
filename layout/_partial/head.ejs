@@ -47,6 +47,15 @@
 		}
 	</script>
 
+	<% if (theme.sidebar.headerPrefix) { %>
+		<script>
+			var headerPrefix = '<%- theme.sidebar.headerPrefix %>';
+		</script>
+	<% } else { %>
+		<script>
+			var headerPrefix = '<i class="fa fa-circle" aria-hidden="true"></i>';
+		</script>
+	<% } %>
 
 	<%- css('css/main.css') %>
 	<%- css('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css') %>
