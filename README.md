@@ -130,6 +130,35 @@ $(document).ready(function () {
 });
 ```
 
+### 10 Mermaid 流程图
+支持流程图、时序图、饼图、状态图等十来种图形，详见[Mermaid官网](https://mermaid.js.org/syntax/flowchart.html) 
+
+- 步骤1：安装`hexo-filter-mermaid-diagrams`
+```
+npm i hexo-filter-mermaid-diagrams --save
+```
+
+- 步骤2：修改Hexo配置文件，把下面代码加入根目录下的`_config.yml`
+```
+# mermaid chart
+mermaid: ## mermaid url https://github.com/knsv/mermaid
+  enable: true  # default true
+  version: "9.3.0" # 当前版本
+  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
+  #startOnload: true  // default true
+```
+
+- 步骤3：在页面文件中加入`mermaid: true`
+```
+---
+title: Hexo支持流程图
+date: 2023-02-03 13:04:06
+tags: Markdown
+mermaid: true
+---
+```
+  
+
 
 ## 其他
 ### 图片
