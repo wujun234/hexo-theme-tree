@@ -67,6 +67,28 @@
     </div>
 <% } %>
 
+ <% if(theme.giscus && theme.giscus.enable) { %>
+	<!-- 解决giscus评论系统中文解码问题，详见 https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/ -->
+	<% if (page.title){ %><meta property="og:title" content="<%= page.path %>"/><% } %>
+	<!-- <script type="module" src="https://unpkg.com/giscus?module"></script> 和下面二选一 -->
+	<script type="module" src="https://cdn.skypack.dev/giscus"></script>
+	<giscus-widget
+	  id="giscuscomments"
+	  repo="<%=theme.giscus.repo %>"
+	  repoid="<%=theme.giscus.repo_id %>"
+	  category="Announcements"
+	  categoryid="<%=theme.giscus.category_id %>"
+	  mapping="og:title" 
+	  term="Welcome to giscus!"
+	  reactionsenabled="<%=theme.giscus.reactions_enabled %>"
+	  emitmetadata="<%=theme.giscus.emit_metadata %>"
+	  inputposition="<%=theme.giscus.input_position %>"
+	  theme="<%=theme.giscus.theme %>"
+	  lang="<%=theme.giscus.lang %>"
+	  loading="lazy"
+	></giscus-widget>
+ <% } %>
+
 <% if (theme.valine.enableComment){ %>
 	<div id="vcomments"></div>
 <% } %>

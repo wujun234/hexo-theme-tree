@@ -23,7 +23,7 @@ theme: tree
 ```
 ### 2 配置主题
 
-如果要使用 `valine` 的评论及阅读量功能，需要在 `themes/tree` 路径下的 `_config.yml` 文件中，填写自己申请的 `leancloud` 账户下面的 `appID` 和 `appKey`
+- 如果要使用 `valine` 的评论及阅读量功能，需要在 `themes/tree` 路径下的 `_config.yml` 文件中，填写自己申请的 `leancloud` 账户下面的 `appID` 和 `appKey`
 
 ```
 valine:
@@ -37,6 +37,12 @@ valine:
     enableComment: false 
     enableCounter: false
 ```
+
+- 如果要使用giscus评论系统，需要在themes/tree路径下的_config.yml，填写giscus配置
+  配置页面：https://giscus.app/zh-CN
+  若不需要，则设置
+giscus:
+    enable: false
 
 ### 3 导航栏和图标
 - 导航栏：当前没有配置化，需要修改`themes/tree/layout/_partial` 路径下的 `header.ejs` 文件
@@ -169,9 +175,9 @@ markdown:
     - markdown-it-mark
     - markdown-it-sub
     - markdown-it-sup
-    - markdown-it-checkbox    # 选项卡, 非自带，需安装
-    - markdown-it-imsize      # 图片大小, 非自带，需安装
-    - markdown-it-expandable  # 自动折叠, 非自带，需安装
+#    - markdown-it-checkbox    # 选项卡, 非自带，需安装
+#    - markdown-it-imsize      # 图片大小, 非自带，需安装
+#    - markdown-it-expandable  # 自动折叠, 非自带，需安装
   anchors:
     level: 2
     collisionSuffix: ""
