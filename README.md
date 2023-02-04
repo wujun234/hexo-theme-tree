@@ -129,8 +129,106 @@ $(document).ready(function () {
   wrapImageWithFancyBox();
 });
 ```
+## 其他
+### 图片
+最开始将图片放在 source 中，使用 github 的相对地址，但是本地 md 编辑器不能识别这样的图片，
 
-### 10 Mermaid 流程图
+后续选择了 picgo，用 github 做图床：https://picgo.github.io/PicGo-Doc/
+
+###  推荐插件
+#### 1. 渲染器 hexo-renderer-markdown-it
+- 步骤1：删除原渲染器
+```
+npm un hexo-renderer-marked --save
+```
+- 步骤2：安装 hexo-renderer-markdown-it
+```
+npm i hexo-renderer-markdown-it --save
+```
+- 步骤3：把下面代码加入根目录下的_config.yml
+```
+markdown:
+  preset: "default"
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: "language-"
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: "“”‘’"
+  enable_rules:
+  disable_rules:
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-cjk-breaks
+    - markdown-it-deflist
+    - markdown-it-emoji
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-mark
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-checkbox    # 选项卡, 非自带，需安装
+    - markdown-it-imsize      # 图片大小, 非自带，需安装
+    - markdown-it-expandable  # 自动折叠, 非自带，需安装
+  anchors:
+    level: 2
+    collisionSuffix: ""
+    permalink: false
+    permalinkClass: "header-anchor"
+    permalinkSide: "left"
+    permalinkSymbol: "¶"
+    case: 0
+    separator: "-"
+```
+
+- 自带功能
+
+|名称  | 描述  | 语法  | 示例  |
+|---|---|---|---|
+| markdown-it-abbr  | 注释  | ``*[HTML]: 超文本标记语言``  | *[HTML]: 超文本标记语言  |
+| markdown-it-emoji  | 表情  | ``:)``  | :)  |
+| markdown-it-footnote|脚注|`参考文献[^脚注文本]`<br>`[^脚注文本]:脚注的内容`| 参考文献[^脚注1] |
+| markdown-it-ins  |  下划线 | ``++下划线++``  | ++下划线++  |
+| markdown-it-mark  | 突出显示  |``==标记==``   | ==标记==  |
+| markdown-it-sub  | 下标  | ``H~2~O``  | H~2~O  |
+| markdown-it-sup  | 上标  | ``X^2^``  | X^2^  |
+
+[^脚注1]:脚注的内容 
+
+#### 2. Mathjax公式
+- 步骤1：安装 hexo-filter-mathjax
+```
+npm install hexo-filter-mathjax --save
+```
+
+- 步骤2：把下面代码加入根目录下的_config.yml
+```
+mathjax:
+tags: none # or 'ams' or 'all'
+single_dollars: true # enable single dollar signs as in-line math delimiters
+cjk_width: 0.9 # relative CJK char width
+normal_width: 0.6 # relative normal (monospace) width
+append_css: true # add CSS to pages rendered by MathJax
+every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
+packages: # extra packages to load
+extension_options: {}
+# you can put your extension options here
+# see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
+```
+
+- 步骤3，在页面文件中设置mathjax: true
+```
+---
+title: On the Electrodynamics of Moving Bodies
+categories: Physics
+date: 1905-06-30 12:00:00
+mathjax: true
+---
+```
+
+#### 3. Mermaid 流程图
 支持流程图、时序图、饼图、状态图等十来种图形，详见[Mermaid官网](https://mermaid.js.org/syntax/flowchart.html) 
 
 - 步骤1：安装`hexo-filter-mermaid-diagrams`
@@ -148,7 +246,7 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   #startOnload: true  // default true
 ```
 
-- 步骤3：在页面文件中加入`mermaid: true`
+- 步骤3：在页面文件中设置`mermaid: true`
 ```
 ---
 title: Hexo支持流程图
@@ -156,27 +254,6 @@ date: 2023-02-03 13:04:06
 tags: Markdown
 mermaid: true
 ---
-```
-  
-
-
-## 其他
-### 图片
-最开始将图片放在 source 中，使用 github 的相对地址，但是本地 md 编辑器不能识别这样的图片，
-
-后续选择了 picgo，用 github 做图床：https://picgo.github.io/PicGo-Doc/
-
-###  推荐插件
-
-推荐安装 [Markdown-it](https://github.com/markdown-it/markdown-it) 插件渲染 `Markdown`
-
-替换之后注意将 \_config.yml 中 hexo 默认的 Markdown 配置改一下
-```
-highlight:
-  enable: false
-  line_number: false
-  auto_detect: false
-  tab_replace: ''
 ```
 
 ### 访问管理
