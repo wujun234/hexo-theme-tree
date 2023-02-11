@@ -24,3 +24,7 @@
 <script type="text/javascript"> 
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
+<% if (config.mermaid && config.mermaid.enable && page.mermaid) { %>
+  <script src="https://cdn.bootcdn.net/ajax/libs/mermaid/<%= config.mermaid.version %>/mermaid.min.js"></script>
+    </script>
+<% } %>

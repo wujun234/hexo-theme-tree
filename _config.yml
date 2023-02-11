@@ -10,10 +10,22 @@ links:
   
 favicon: /favicon.ico
 
+# giscus评论系统在这里配置 https://giscus.app/zh-CN
+giscus:
+    enable: true
+    repo: "giscus/giscus-component"
+    repo_id: "MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA="
+    category_id: "DIC_kwDOF1L2fM4B-hVS"
+    reactions_enabled: "1"	 
+    emit_metadata: "0"
+    input_position: "top"	
+    theme: "light"
+    lang: "zh-CN"
+
 # valine 
 valine:
     # 评论
-    enableComment: true 
+    enableComment: false 
     # 阅读量
     enableCounter: false
     # valine appID
@@ -24,7 +36,7 @@ valine:
     avatar: retro
 
 # 是否开启“不蒜子”统计访问量
-busuanzi: true
+busuanzi: false
 
 # 底部版权开始年份
 siteStartYear: 2019
@@ -38,8 +50,8 @@ siteStartYear: 2019
 searchEngine: https://www.google.com/search?q=
 homeHost: wujun234.github.io
 
-#tags: true
-#categories: true
+tags: true
+categories: true
 
 # 左侧导航栏，用文件名还是文章名
 sidebar:
