@@ -2,7 +2,7 @@ $(document).ready(function () {
   hljs.initHighlightingOnLoad();
   clickTreeDirectory();
   serachTree();
-  pjaxLoad();
+  // pjaxLoad();
   showArticleIndex();
   switchTreeOrIndex();
   scrollToTop();

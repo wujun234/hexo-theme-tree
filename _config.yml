@@ -1,59 +1,67 @@
 title: tree
 
-author: 吴俊
+author: your name
 
-links:
-  github: https://github.com/wujun234
-  custom:
-    - name: UidGenerator
-      URL: https://github.com/wujun234/uid-generator-spring-boot-starter
-  
+#网站图标，可替换
 favicon: /favicon.ico
 
-# giscus评论系统在这里配置 https://giscus.app/zh-CN
+# 可选
+links:
+  # github 图标 的链接，换成你自己的，配置时带上 http、https或者//
+  github: https://github.com/wujun234
+  # 普通链接，可配置多个，以下是示例
+  custom:
+    - name: Tree
+      URL: https://github.com/wujun234/hexo-theme-tree
+    - name: UidGenerator
+      URL: https://github.com/wujun234/uid-generator-spring-boot-starter
+
+
+# 可选, giscus 评论系统，这里配置 https://giscus.app/zh-CN
 giscus:
-    enable: true
-    repo: "giscus/giscus-component"
-    repo_id: "MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA="
-    category_id: "DIC_kwDOF1L2fM4B-hVS"
+    enable: false
+    repo:
+    repo_id:
+    category_id:
     reactions_enabled: "1"	 
     emit_metadata: "0"
     input_position: "top"	
     theme: "light"
     lang: "zh-CN"
 
-# valine 
+# 可选, valine
 valine:
-    # 评论
-    enableComment: false 
-    # 阅读量
-    enableCounter: false
-    # valine appID
-    appID:
-    # valine appKey
-    appKey:
-    placeholder: 请输入评论
-    avatar: retro
+  # 评论
+  enableComment: false
+  # 阅读量
+  enableCounter: false
+  # valine appID
+  appID:
+  # valine appKey
+  appKey:
+  placeholder: 请输入评论
+  avatar: retro
 
-# 是否开启“不蒜子”统计访问量
+# 是否开启“不蒜子”统计访问量，可选
 busuanzi: false
 
-# 底部版权开始年份
-siteStartYear: 2019
+# 底部版权开始年份，不配置默认为今年
+#siteStartYear: 2018
 
 ####### 站外搜索配置 #####
 # 站点如果【被搜索引擎收录】，可以配置通过搜索引擎全站搜索
 # searchEngine：搜索引擎，不配置则默认为谷歌，可替换为百度等其他搜索引擎的搜索 URL
-#   https://www.baidu.com/s?wd=
-#   https://www.google.com/search?q=
-# homeHost：要搜索的站点域名，不配置默认取当前页面的域名
+#searchEngine: https://www.baidu.com/s?wd=
 searchEngine: https://www.google.com/search?q=
-homeHost: wujun234.github.io
+# homeHost：要搜索的站点域名，不配置默认取当前页面的域名，以下是示例
+homeHost: wujun234.com
 
-tags: true
-categories: true
+#设置为 true 之前，要先确保，已经创建了 hexo 的 tags\categories\about 页面
+tags: false
+categories: false
+about: false
 
 # 左侧导航栏，用文件名还是文章名
 sidebar:
   # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
-  usePostTitle: false
+  usePostTitle: ture

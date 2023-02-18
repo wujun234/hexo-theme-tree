@@ -1,6 +1,6 @@
 <div id="footer">
 	<p>
-	©<%- theme.siteStartYear %>-<span id="footerYear"></span> 
+	©<span id="footerYear-start"><%- theme.siteStartYear %></span>-<span id="footerYear-end"></span>
 	<a href="/"><%- config.author %></a> 
 	
 	<% if (theme.busuanzi){ %>
@@ -21,8 +21,14 @@
 	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
 	</p>
 </div>
-<script type="text/javascript"> 
-	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+
+<% if (theme.siteStartYear == undefined) { %>
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+<% } %>
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
 </script>
 <% if (config.mermaid && config.mermaid.enable && page.mermaid) { %>
   <script src="https://cdn.bootcdn.net/ajax/libs/mermaid/<%= config.mermaid.version %>/mermaid.min.js"></script>
