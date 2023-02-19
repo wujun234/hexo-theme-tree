@@ -5,7 +5,7 @@
 
 有问题欢迎及时联系，issues、邮件都行
 
-Demo：[https://wujun234.github.io/](https://wujun234.github.io/)
+Demo：[https://wujun234.com/](https://wujun234.com/)
 
 ![](source/Tree.png)
 
@@ -134,9 +134,10 @@ sidebar:
 - homeHost: 你的域名，默认当前页面的域名
 
 ## 5 pjax
-主题默认支持了 pjax 跳转，但是在网速慢的时候，pjax 因为没有页面刷新的交互，可能会让人误以为点击没响应。
+~~主题默认支持了 pjax 跳转，但是在网速慢的时候，pjax 因为没有页面刷新的交互，可能会让人误以为点击没响应。~~
 
 ~~如果要去掉 pjax 特性，注释掉主题 'source/js/main.js' 文件中的 'pjaxLoad()' 方法就好。~~
+
 默认注释了，需要打开的就去掉注释
 
 ```js
@@ -167,6 +168,6 @@ $(document).ready(function () {
 - 流程图：hexo-filter-mermaid-diagrams
 
 ## 访问管理
-我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 'head' 里加一个 '<script>' 块就行了
+~~我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 'head' 里加一个 '<script>' 块就行了~~
 
-如果有自定义域名，可以直接用 Cloudflare 接入域名，会有统计，不需要 baidu 了。
+现在改用 Cloudflare 了，免费，接入 DNS，会有统计，还有分析。
