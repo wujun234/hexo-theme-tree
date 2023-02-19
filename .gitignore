@@ -1,6 +1,7 @@
 /source/google*.html
 /source/robots.txt
 _config-local-backup.yml
+_config-origin-backup.yml
 
 ### STS ###
 .apt_generated

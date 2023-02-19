@@ -1,5 +1,7 @@
+# 必填
 title: tree
 
+# 以下为选填
 author: your name
 
 #网站图标，可替换
@@ -17,17 +19,19 @@ links:
       URL: https://github.com/wujun234/uid-generator-spring-boot-starter
 
 
-# 可选, giscus 评论系统，这里配置 https://giscus.app/zh-CN
+# 可选, giscus 评论系统
+# 这里配置 https://giscus.app/zh-CN，将生成好的填在下面
+# enable 为 true 时， 填自己的 repo、repo_id、category_id
 giscus:
-    enable: false
-    repo:
-    repo_id:
-    category_id:
-    reactions_enabled: "1"	 
-    emit_metadata: "0"
-    input_position: "top"	
-    theme: "light"
-    lang: "zh-CN"
+  enable: false
+  repo:
+  repo_id:
+  category_id:
+  reactions_enabled: "1"
+  emit_metadata: "0"
+  input_position: "top"
+  theme: "preferred_color_scheme"
+  lang: "zh-CN"
 
 # 可选, valine
 valine:
