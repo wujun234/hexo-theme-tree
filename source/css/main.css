@@ -200,10 +200,11 @@ a {
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 0;
-	margin: 80px auto 30px auto;
+	padding: 14px;
+	margin: 50px auto auto auto;
 }
 .index-li {
-	margin: 20px 0 20px 0;
+	margin: 20px 0 0 0;
 	border-bottom: 1px solid #c6c6c6;
 }
 .index-li a{
