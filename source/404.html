@@ -1,19 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>404</title>
-  <meta http-equiv="refresh" content="3;url=/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 50px;
+        }
+
+        .error-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ff0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            font-size: 48px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 72px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+
+        a {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
-  <h1>
-	  404
-	  <br>
-	  Not Found!
-	  <br>
-	  <a class="notfound-link" href="/">
-		返回主页
-	  </a>
-  </h1>
+    <div class="error-icon">X</div>
+    <h1>404</h1>
+    <p>抱歉，页面未找到。</p>
+    <hr>
+    <p>您可以返回 <a href="/">首页</a>。</p>
 </body>
 </html>
