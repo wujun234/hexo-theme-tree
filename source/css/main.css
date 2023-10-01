@@ -200,6 +200,7 @@ a {
 /* index */
 .content{
 	max-width: 850px;
+	min-height: calc(100vh - 130px);
 	top: 50px;
 	flex-grow: 1;
 	flex-shrink: 1;

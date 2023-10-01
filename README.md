@@ -164,7 +164,6 @@ $(document).ready(function () {
 以下插件都是 hexo 的，跟 Tree 主题无关
 
 - 渲染器：[hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
-- 公式：[hexo-filter-mathjax](https://github.com/next-theme/hexo-filter-mathjax)
 - 流程图：[hexo-filter-mermaid-diagrams](https://github.com/webappdevelp/hexo-filter-mermaid-diagrams)
 
 ## 访问管理
