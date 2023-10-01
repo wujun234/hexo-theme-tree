@@ -1,13 +1,18 @@
 # Manual
 title: tree
 
-# The following are optional
+# support language
+language:
+  - en
+  - zh-Hans
+
+########## The following are optional #########
 # author name in footer
 author: your name
 # author name link in footer
 website: /
 
-#网站图标，可替换
+#favicon, replaceable
 favicon: /favicon.ico
 
 # 可选

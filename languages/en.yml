@@ -1,0 +1,9 @@
+header:
+  menu:
+    about: About
+    tags: Tags
+    categories: Categories
+
+sidebar:
+  site-toc:
+    search: Press Enter to search

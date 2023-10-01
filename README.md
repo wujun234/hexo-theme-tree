@@ -154,6 +154,14 @@ $(document).ready(function () {
 });
 ```
 
+## 6 国际化（i18n）
+- 国际化：需要在 `themes/tree` 路径下的 `_config.yml`，需要修改`language`相关配置
+- 小试牛刀，目前就搜索框和导航栏有文字
+```
+# 默认 en， 可选 en 和 zh-Hans
+language: zh-Hans
+```
+
 # 其他
 ## 图片
 最开始将图片放在 source 中，使用 github 的相对地址，但是本地 md 编辑器不能识别这样的图片，
