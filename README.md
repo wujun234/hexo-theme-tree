@@ -165,7 +165,9 @@ $(document).ready(function () {
 
 - 渲染器：[hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
 - 流程图：[hexo-filter-mermaid-diagrams](https://github.com/webappdevelp/hexo-filter-mermaid-diagrams)
-
+- 通用 sitemap: [hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)
+- 百度 sitemap：[hexo-generator-baidu-sitemap](https://github.com/coneycode/hexo-generator-baidu-sitemap)
+- 一键部署: [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git)
 ## 访问管理
 ~~我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 'head' 里加一个 '<script>' 块就行了~~
 

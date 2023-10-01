@@ -1,8 +1,11 @@
-# 必填
+# Manual
 title: tree
 
-# 以下为选填
+# The following are optional
+# author name in footer
 author: your name
+# author name link in footer
+website: /
 
 #网站图标，可替换
 favicon: /favicon.ico

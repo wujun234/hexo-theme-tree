@@ -1,7 +1,12 @@
 <div id="footer">
 	<p>
 	©<span id="footerYear-start"><%- theme.siteStartYear %></span>-<span id="footerYear-end"></span>
-	<a href="/"><%- config.author %></a> 
+
+	<% if (config.website){ %>
+        <a href='<%- config.website %>' target="_blank"><%- config.author %></a>
+	<% } else { %>
+	    <a href="/"><%- config.author %></a>
+	<% } %>
 	
 	<% if (theme.busuanzi){ %>
 		|
@@ -17,7 +22,7 @@
 	<% } %>
 	<br>
 	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
-	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
 	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
 	</p>
 </div>
