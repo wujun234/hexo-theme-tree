@@ -30,7 +30,11 @@
 <script type="text/javascript">
 	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
 </script>
-<% if (config.mermaid && config.mermaid.enable && page.mermaid) { %>
-  <script src="https://cdn.bootcdn.net/ajax/libs/mermaid/<%= config.mermaid.version %>/mermaid.min.js"></script>
+<% if (config.mermaid && config.mermaid.enable) { %>
+    <script src='https://unpkg.com/mermaid@<%= config.mermaid.version %>/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
     </script>
 <% } %>
