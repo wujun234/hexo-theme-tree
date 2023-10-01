@@ -3,7 +3,7 @@
 
 一个简洁的主题，主要功能是 “树状导航” + “树状目录”，可选配“评论”和“阅读量”功能，支持基于搜索引擎的全站搜索。通过 fancybox 支持图片点击放大。
 
-有问题欢迎及时联系，issues、邮件都行
+有问题欢迎及时 issues
 
 Demo：[https://wujun234.com/](https://wujun234.com/)
 
@@ -163,9 +163,9 @@ $(document).ready(function () {
 ##  推荐插件
 以下插件都是 hexo 的，跟 Tree 主题无关
 
-- 渲染器：hexo-renderer-markdown-it
-- 公式：hexo-filter-mathjax
-- 流程图：hexo-filter-mermaid-diagrams
+- 渲染器：[hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
+- 公式：[hexo-filter-mathjax](https://github.com/next-theme/hexo-filter-mathjax)
+- 流程图：[hexo-filter-mermaid-diagrams](https://github.com/webappdevelp/hexo-filter-mermaid-diagrams)
 
 ## 访问管理
 ~~我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 'head' 里加一个 '<script>' 块就行了~~
