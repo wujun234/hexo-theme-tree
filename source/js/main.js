@@ -323,7 +323,7 @@ function scrollOff() {
   $sidebar.addClass('off');
   $sidebar.removeClass('on');
 
-  $content.addClass('off');
+  $content.addClass('content-off');
   $content.removeClass('content-on');
   $header.addClass('off');
   $header.removeClass('header-on');

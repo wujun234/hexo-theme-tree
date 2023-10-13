@@ -4,19 +4,19 @@
 	<ul id="menu">
     <% if (theme.about){ %>
       <li class="menu-item">
-        <a href="/about" class="menu-item-link">ABOUT</a>
+        <a href="/about" class="menu-item-link"><%= __('header.menu.about') %></a>
       </li>
     <% } %>
 
     <% if (theme.tags){ %>
       <li class="menu-item">
-        <a href="/tags" class="menu-item-link">标签</a>
+        <a href="/tags" class="menu-item-link"><%= __('header.menu.tags') %></a>
       </li>
     <% } %>
 
     <% if (theme.categories){ %>
       <li class="menu-item">
-        <a href="/categories" class="menu-item-link">分类</a>
+        <a href="/categories" class="menu-item-link"><%= __('header.menu.categories') %></a>
       </li>
     <% } %>
 

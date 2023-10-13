@@ -3,7 +3,7 @@
 
 一个简洁的主题，主要功能是 “树状导航” + “树状目录”，可选配“评论”和“阅读量”功能，支持基于搜索引擎的全站搜索。通过 fancybox 支持图片点击放大。
 
-有问题欢迎及时联系，issues、邮件都行
+有问题欢迎及时 issues
 
 Demo：[https://wujun234.com/](https://wujun234.com/)
 
@@ -154,6 +154,14 @@ $(document).ready(function () {
 });
 ```
 
+## 6 国际化（i18n）
+- 国际化：需要在 `themes/tree` 路径下的 `_config.yml`，需要修改`language`相关配置
+- 小试牛刀，目前就搜索框和导航栏有文字
+```
+# 默认 en， 可选 en 和 zh-Hans
+language: zh-Hans
+```
+
 # 其他
 ## 图片
 最开始将图片放在 source 中，使用 github 的相对地址，但是本地 md 编辑器不能识别这样的图片，
@@ -163,10 +171,11 @@ $(document).ready(function () {
 ##  推荐插件
 以下插件都是 hexo 的，跟 Tree 主题无关
 
-- 渲染器：hexo-renderer-markdown-it
-- 公式：hexo-filter-mathjax
-- 流程图：hexo-filter-mermaid-diagrams
-
+- 渲染器：[hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)
+- 流程图：[hexo-filter-mermaid-diagrams](https://github.com/webappdevelp/hexo-filter-mermaid-diagrams)
+- 通用 sitemap: [hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)
+- 百度 sitemap：[hexo-generator-baidu-sitemap](https://github.com/coneycode/hexo-generator-baidu-sitemap)
+- 一键部署: [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git)
 ## 访问管理
 ~~我自己用的是百度统计 https://tongji.baidu.com ，很简单，注册后在 'head' 里加一个 '<script>' 块就行了~~
 

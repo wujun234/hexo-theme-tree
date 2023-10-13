@@ -14,7 +14,10 @@ a {
     text-decoration: none;
 }
 .content-on{
-	padding-left: 250px;
+	padding: 14px 14px 14px 250px
+}
+.content-off{
+ 	padding: 14px;
 }
 .header-on{
 	padding-left: 250px;
@@ -22,6 +25,7 @@ a {
 .on,
 .header-on,
 .content-on,
+.content-off,
 .off{
 	transition: all 0.5s;
 }
@@ -194,13 +198,13 @@ a {
 	-o-transition: 0.5s;
 }
 /* index */
-#content{
+.content{
 	max-width: 850px;
+	min-height: calc(100vh - 130px);
 	top: 50px;
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 0;
-	padding: 14px;
 	margin: 50px auto auto auto;
 }
 .index-li {

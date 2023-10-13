@@ -1,10 +1,18 @@
-# 必填
+# Manual
 title: tree
 
-# 以下为选填
-author: your name
+# support language
+language:
+  - en
+  - zh-Hans
 
-#网站图标，可替换
+########## The following are optional #########
+# author name in footer
+author: your name
+# author name link in footer
+website: /
+
+#favicon, replaceable
 favicon: /favicon.ico
 
 # 可选
