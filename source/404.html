@@ -1,19 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>404</title>
-  <meta http-equiv="refresh" content="3;url=/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404页面 - 页面未找到（错误）">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>404 - 页面未找到(Error)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 50px;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        .error-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ff0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            font-size: 48px;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid #fff;
+        }
+
+        h1 {
+            font-size: 72px;
+            margin-top: 30px;
+        }
+
+        h2, h3 {
+            font-size: 36px;
+            margin-top: 15px;
+        }
+
+        p {
+            font-size: 24px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 2px solid #ccc;
+        }
+
+        a {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
-  <h1>
-	  404
-	  <br>
-	  Not Found!
-	  <br>
-	  <a class="notfound-link" href="/">
-		返回主页
-	  </a>
-  </h1>
+    <header>
+        <div class="error-icon">X</div>
+        <h1>404</h1>
+    </header>
+    <h2>页面未找到 ERRor:NotFound</h2>
+    <p>抱歉，页面未找到。请检查您网址拼写是否正常，你也可以联系网站管理员检验页面是否被创建</p>
+    <hr>
+    <p>您可以返回 <a href="/">首页</a>，或联系管理员：<a href="mailto:admin@awaae001.top">admin@awaae001.top</a></p>
 </body>
 </html>

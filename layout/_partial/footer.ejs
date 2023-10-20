@@ -1,45 +1,89 @@
 <div id="footer">
 	<p>
-	©<span id="footerYear-start"><%- theme.siteStartYear %></span>-<span id="footerYear-end"></span>
+		©<span id="footerYear-start"><%- theme.siteStartYear %></span>-<span id="footerYear-end"></span>
 
-	<% if (config.website){ %>
-        <a href='<%- config.website %>' target="_blank"><%- config.author %></a>
-	<% } else { %>
-	    <a href="/"><%- config.author %></a>
-	<% } %>
-	
-	<% if (theme.busuanzi){ %>
-		|
-		<span id="busuanzi_container_site_pv">
-			pv
-			<span id="busuanzi_value_site_pv"></span>
-		</span>
-		|
-		<span id="busuanzi_container_site_uv"> 
-			uv
-			<span id="busuanzi_value_site_uv"></span>
-		</span>
-	<% } %>
-	<br>
-	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
-	by <a href="//wujun.me" target="_blank">Wu Jun</a>
-	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+		<% if (config.website){ %>
+			<a href='<%- config.website %>' target="_blank"><%- config.author %></a>
+			<% } else { %>
+				<a href="/"><%- config.author %></a>
+				<% } %>
+
+					<% if (theme.busuanzi){ %>
+						|
+						<span id="busuanzi_container_site_pv">
+							pv
+							<span id="busuanzi_value_site_pv"></span>
+						</span>
+						|
+						<span id="busuanzi_container_site_uv">
+							uv
+							<span id="busuanzi_value_site_uv"></span>
+						</span>
+						<% } %>
+							<br>
+							Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+							by <a href="//wujun.me" target="_blank">Wu Jun</a>
+							Powered by <a href="//hexo.io" target="_blank">Hexo</a>
 	</p>
-</div>
 
-<% if (theme.siteStartYear == undefined) { %>
-<script type="text/javascript">
-	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
-</script>
-<% } %>
-<script type="text/javascript">
-	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
-</script>
-<% if (config.mermaid && config.mermaid.enable) { %>
-    <script src='https://unpkg.com/mermaid@<%= config.mermaid.version %>/dist/mermaid.min.js'></script>
-    <script>
-      if (window.mermaid) {
-        mermaid.initialize({theme: 'forest'});
-      }
-    </script>
-<% } %>
+	<!-- 一段用于在页底显示运行时间的代码 by:awaae001 -->
+	<% if (theme.custom.enableRuntimeCard) { %>
+		<div id="runtime-card" style="background-color: #60281e; color: #fff; text-align: center; padding: 10px;">
+			网站已运行：
+			<span id="uptime">加载中...</span>
+		</div>
+		<% } %>
+
+			<% if (theme.siteStartYear==undefined) { %>
+				<script type="text/javascript">
+					document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+				</script>
+				<% } %>
+					<script type="text/javascript">
+						document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+					</script>
+
+					<script>
+						// 计算并更新网站运行时间的函数
+						function updateUptime() {
+							var startDate = new Date("<%- theme.custom.siteStartDate %>"); // 使用自定义参数作为启动日期
+							var currentDate = new Date();
+							var uptimeMilliseconds = currentDate - startDate;
+
+							var years = Math.floor(uptimeMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+							uptimeMilliseconds -= years * 1000 * 60 * 60 * 24 * 365.25;
+
+							var months = Math.floor(uptimeMilliseconds / (1000 * 60 * 60 * 24 * 30.44));
+							uptimeMilliseconds -= months * 1000 * 60 * 60 * 24 * 30.44;
+
+							var days = Math.floor(uptimeMilliseconds / (1000 * 60 * 60 * 24));
+							uptimeMilliseconds -= days * 1000 * 60 * 60 * 24;
+
+							var hours = Math.floor(uptimeMilliseconds / (1000 * 60 * 60));
+							uptimeMilliseconds -= hours * 1000 * 60 * 60;
+
+							var minutes = Math.floor(uptimeMilliseconds / (1000 * 60));
+							uptimeMilliseconds -= minutes * 1000 * 60;
+
+							var seconds = Math.floor(uptimeMilliseconds / 1000);
+
+							var uptimeText = years + "年 " + months + "月 " + days + "天 " + hours + "小时 " + minutes + "分钟 " + seconds + "秒";
+							document.getElementById("uptime").textContent = uptimeText;
+						}
+
+						// 初始加载时计算运行时间
+						updateUptime();
+
+						// 定时更新运行时间（每秒）
+						setInterval(updateUptime, 1000);
+					</script>
+
+					<% if (config.mermaid && config.mermaid.enable) { %>
+						<script
+							src='https://unpkg.com/mermaid@<%= config.mermaid.version %>/dist/mermaid.min.js'></script>
+						<script>
+							if (window.mermaid) {
+								mermaid.initialize({ theme: 'forest' });
+							}
+						</script>
+						<% } %>

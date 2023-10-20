@@ -77,3 +77,8 @@ about: false
 sidebar:
   # usePostTitle 为 ture 用文章名，不填或为 false 用文件名
   usePostTitle: ture
+
+#页面底部的网站运行时长,注意：时间格式为 年-月-日，单数必须要要加零
+custom:
+  enableRuntimeCard: ture
+  siteStartDate: "2023-06-12"
