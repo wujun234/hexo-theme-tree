@@ -11,7 +11,7 @@ Demo：[https://wujun234.com/](https://wujun234.com/)
 
 # 下载主题
 
-下载主题到 `hexo` 根目录中 `themes` 目录下
+下载主题(可选择 release 版本)到 `hexo` 根目录中 `themes` 目录下
 ```
 git clone https://github.com/wujun234/hexo-theme-tree.git  themes/tree
 ```
@@ -21,48 +21,101 @@ git clone https://github.com/wujun234/hexo-theme-tree.git  themes/tree
 theme: tree
 ```
 # 配置主题
-## 1 评论框
-### valine
-- 如果要使用 `valine` 的评论及阅读量功能，需要在 `themes/tree` 路径下的 `_config.yml` 文件中，填写自己申请的 `leancloud` 账户下面的 `appID` 和 `appKey`，并且分别设置为 true
-- 默认是不使用，false
+## 0 默认配置
+为了将 个人配置 跟 主题更新 解耦，目前将之前放在 `themes/tree/_config.yml` 的的配置项移到了 `hexo` 根目录中的 `_config.yml` 文件。
 
-```
-valine:
-  appID: 
-  appKey: 
-  enableComment: false 
-  enableCounter: false
-```
+**旧版**：无感升级，因为 themes 下的配置是继承 hexo config 的
 
-### giscus
-- 如果要使用 `giscus` 评论系统，需要在 `themes/tree` 路径下的 `_config.yml`，填写 `giscus` 配置
-- 配置页面：https://giscus.app/zh-CN
-- 默认是不使用，false
-
+请复制粘贴下面默认配置到 `hexo` 根目录中的 `_config.yml` 文件中，后续可以根据自己需求更改配置
 ```
+########## The following are all optional #########
+####### footer bar #####
+# footer, author name
+author: your name
+# footer, author name link
+website: /
+# footer, copyright start year, default this year
+#siteStartYear: 2018
+# favicon, replaceable
+favicon: /favicon.ico
+
+####### header bar #####
+# before set to true, please maker sure you've created hexo tags\categories\about pages
+tags: false
+categories: false
+about: false
+links:
+    # GitHub links，start with http、https or //
+    github: https://github.com/wujun234
+    # normal links，support multiple
+    custom:
+      - name: Tree
+        URL: https://github.com/wujun234/hexo-theme-tree
+      - name: UidGenerator
+        URL: https://github.com/wujun234/uid-generator-spring-boot-starter
+
+####### sidebar #####
+sidebar:
+    # name for left sidebar post list. ture: title name; false: file name
+    usePostTitle: ture
+
+####### plug-in #####
+# optional, giscus comment
+# get generated configurations from https://giscus.app/
+# when enable is true, full out your repo、repo_id、category_id
 giscus:
     enable: false
+    repo:
+    repo_id:
+    category_id:
+    reactions_enabled: "1"
+    emit_metadata: "0"
+    input_position: "top"
+    theme: "preferred_color_scheme"
+    lang: "en"
+# optional, valine
+valine:
+    enableComment: false
+    enableCounter: false
+    # valine appID
+    appID:
+    # valine appKey
+    appKey:
+    placeholder: Please enter a comment
+    avatar: retro
+#optional, busuanzi, statistics of visits
+busuanzi: false
+
+####### Off-page search #####
+# If the site is [included by a search engine]
+# searchEngine：default google, can replace with other searchEngine
+#searchEngine: https://www.baidu.com/s?wd=
+searchEngine: https://www.google.com/search?q=
+# homeHost：target domain, default current page domain
+homeHost: wujun234.com
 ```
 
-## 2 导航栏和图标
-### 图标
+## 1 导航栏和网站图标
+### 网站图标
 替换`themes/tree/source` 路径下的`favicon.ico` 文件
 
 ### 自定义链接
-- 导航栏：配置化，需要在 `themes/tree` 路径下的 `_config.yml`，需要修改`links`相关配置
+- 导航栏：配置化，需要在 `hexo` 根目录中的 `_config.yml`，需要修改 `links` 相关配置
 ```
-# 可选
+# optional
 links:
-  # github 图标
-  github: your github link
-  # 普通链接，可多个
-  custom:
-    - name:
-      URL:
+    # github links，start with http、https or //
+    github:  https://your github link
+    # normal links，support multiple
+    custom:
+        - name:
+          URL:
+        - name:
+          URL:
 ```
 
 ### about 页
-在 `source`路径下，与`_posts`文件夹平行，建立一个`about`页
+在 `source` 路径下，与 `_posts` 文件夹平行，建立一个 `about` 页
 
 执行
 ```
@@ -70,12 +123,12 @@ hexo new page --path about/index "About"
 ```
 参考：https://hexo.io/zh-cn/docs/commands.html#new
 
-修改主题 `tree` 目录的 `_config.yml`，添加
+修改 `hexo` 根目录中的 `_config.yml`，添加
 ```
 about: true
 ```
 ### tags 页
-在 `source`路径下，与`_posts`文件夹平行，建立一个`tags`页
+在 `source` 路径下，与 `_posts` 文件夹平行，建立一个 `tags` 页
 
 执行
 ```
@@ -90,13 +143,13 @@ type: "tags"
 layout: "tags"
 ---
 ```
-修改主题 `tree` 目录的 `_config.yml`，添加
+修改 `hexo` 根目录中的 `_config.yml`，添加
 ```
 tags: true
 ```
 
 ### categories 页
-在 `source`路径下，与`_posts`文件夹平行，建立一个`categories`页
+在 `source` 路径下，与 `_posts` 文件夹平行，建立一个 `categories` 页
 
 执行
 ```
@@ -111,27 +164,76 @@ type: "categories"
 layout: "categories"
 ---
 ```
-修改主题 `tree` 目录的 `_config.yml`，添加
+修改 `hexo` 根目录中的 `_config.yml`，添加
 ```
 categories: true
 ```
-## 3 文章树、目录树
+
+## 2 文章树、目录树
 页面左侧的文章树是根据 source 文件夹里的文章和文件夹生成的
 
-修改主题 `tree` 目录的 `_config.yml`, `sidebar.usePostTitle`可以控制目录树中展示文件名还是文章名
+修改 `hexo` 根目录的 `_config.yml`, `sidebar.usePostTitle` 可以控制目录树中展示文件名还是文章名
 ```
-# 左侧导航栏，用文件名还是文章名
+# name for left side bar post list
 sidebar:
-  # usePostTitle 为 ture 优先用文章名，不填或为 false 用文件名
-  usePostTitle: true
+    # ture: title name; false: file name
+    usePostTitle: true
+```
+
+## 3 评论框
+### Giscus
+- 如果要使用 `giscus` 评论系统，需要在 `hexo` 根目录中的 `_config.yml`，填写 `giscus` 配置
+- 配置页面：https://giscus.app
+- 默认是不使用，false
+
+```
+# optional, giscus comment
+# get generated configurations from https://giscus.app/
+# when enable is true, full out your repo、repo_id、category_id
+giscus:
+    enable: false
+    repo:
+    repo_id:
+    category_id:
+    reactions_enabled: "1"
+    emit_metadata: "0"
+    input_position: "top"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
+```
+
+### Valine
+- 如果要使用 `valine` 的评论及阅读量功能，需要在 `hexo` 根目录中的 `_config.yml` 文件中，填写自己申请的 `leancloud` 账户下面的 `appID` 和 `appKey`，并且分别设置为 true
+- 默认是不使用，false
+
+```
+# optional, valine
+valine:
+    enableComment: false
+    enableCounter: false
+    # valine appID
+    appID:
+    # valine appKey
+    appKey:
+    placeholder: Please enter a comment
+    avatar: retro
 ```
 
 ## 4 全站搜索
-修改主题 `tree` 目录的 `_config.yml`
+修改 `hexo` 根目录的 `_config.yml`
 
 站点如果【被搜索引擎收录】，可以配置通过搜索引擎全站搜索
 - searchEngine: 你选择的搜索引擎搜索 url，默认谷歌，例如"https://www.baidu.com/s?wd="、"https://www.google.com/search?q="
 - homeHost: 你的域名，默认当前页面的域名
+```
+####### Off-page search #####
+# If the site is [included by a search engine]
+# searchEngine：default google, can replace with other searchEngine
+#searchEngine: https://www.baidu.com/s?wd=
+searchEngine: https://www.google.com/search?q=
+# homeHost：target domain, default current page domain
+homeHost: wujun234.com
+```
 
 ## 5 pjax
 ~~主题默认支持了 pjax 跳转，但是在网速慢的时候，pjax 因为没有页面刷新的交互，可能会让人误以为点击没响应。~~
@@ -155,10 +257,11 @@ $(document).ready(function () {
 ```
 
 ## 6 国际化（i18n）
-- 国际化：需要在 `themes/tree` 路径下的 `_config.yml`，需要修改`language`相关配置
+- 国际化：需要在 `hexo` 根目录的 `_config.yml`，需要修改 `language` 相关配置
 - 小试牛刀，目前就搜索框和导航栏有文字
 ```
-# 默认 en， 可选 en 和 zh-Hans
+# support language
+# default en， can select from [en, zh-Hans]
 language: zh-Hans
 ```
 
