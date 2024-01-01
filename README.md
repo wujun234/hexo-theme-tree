@@ -26,7 +26,8 @@ theme: tree
 
 **旧版**：无感升级，因为 themes 下的配置是继承 hexo config 的
 
-请复制粘贴下面默认配置到 `hexo` 根目录中的 `_config.yml` 文件中，后续可以根据自己需求更改配置
+请复制粘贴下面默认配置到 `hexo` 根目录中的 `_config.yml` 文件中(或者新建 `_config.tree.yml` 文件)，后续可以根据自己需求更改配置
+
 ```
 ########## The following are all optional #########
 ####### footer bar #####
