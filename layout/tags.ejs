@@ -2,20 +2,22 @@
 	<i class="fa fa-tags" aria-hidden="true"></i>TAGS
 </h1>
 <h2 id="article-title">
-	目前共计 <%- site.tags.data.length %> 个标签
+	目前共计 <%- site.tags.length %> 个标签
 </h2>
 
 
 <div id="article-content">
 	<ul>
-      <% for (var j=0; j < site.tags.data.length; j++) { %>
-          <% if (site.tags.data[j] && site.tags.data[j].name) { %>
-            <li class="menu-item">
-                <span>
-                      <a href="/<%- site.tags.data[j].path %>"><%- site.tags.data[j].name %>(<%- site.tags.data[j].length %>)</a>
-                </span>
-            </li>
-          <% } %>
-      <% } %>
+        <% if (site.tags && site.tags.length) { %>
+          <%
+            var tags = [];
+            site.tags.forEach(function(tag){
+              tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
+            });
+          %>
+          <div class="tags">
+            <%- tags.join(', ') %>
+          </div>
+        <% } %>
 	</ul>
 </div>
