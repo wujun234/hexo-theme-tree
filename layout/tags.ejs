@@ -1,23 +1,21 @@
 <h1 id="article-title">
-	<i class="fa fa-tags" aria-hidden="true"></i>TAGS
+	<i class="fa fa-tags" aria-hidden="true"></i><%= __('tags.title') %>
 </h1>
-<h2 id="article-title">
-	目前共计 <%- site.tags.length %> 个标签
-</h2>
+<h3>
+	<%= __('tags.counts') %> <%- site.tags.length %>
+</h3>
 
 
 <div id="article-content">
 	<ul>
         <% if (site.tags && site.tags.length) { %>
-          <%
-            var tags = [];
-            site.tags.forEach(function(tag){
-              tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
-            });
-          %>
-          <div class="tags">
-            <%- tags.join(', ') %>
-          </div>
+            <% site.tags.forEach(function(tag){ %>
+                <li class="menu-item">
+                    <span>
+                          <a href="/<%- tag.path %>"><%- tag.name %>(<%- tag.length %>)</a>
+                    </span>
+                </li>
+            <% }); %>
         <% } %>
 	</ul>
 </div>

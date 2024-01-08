@@ -7,3 +7,14 @@ header:
 sidebar:
   site-toc:
     search: Press Enter to search
+
+about:
+  title: About
+
+categories:
+  title: Categories
+  counts: Totally
+
+tags:
+  title: Tags
+  counts: Totally

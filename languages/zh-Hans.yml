@@ -7,3 +7,14 @@ header:
 sidebar:
   site-toc:
     search: 按回车全站搜索
+
+about:
+  title: 关于
+
+categories:
+  title: 分类
+  counts: 总计
+
+tags:
+  title: 标签
+  counts: 总计

@@ -1,22 +1,20 @@
 <h1 id="article-title">
-	<i class="fa fa-folder-open" aria-hidden="true"></i>分类
+	<i class="fa fa-folder-open" aria-hidden="true"></i><%= __('categories.title') %>
 </h1>
-<h2 id="article-title">
-	目前共计 <%- site.categories.length %> 个分类
-</h2>
+<h3>
+	<%= __('categories.counts') %> <%- site.categories.length %>
+</h3>
 
 <div id="article-content">
 	<ul>
         <% if (site.categories && site.categories.length) { %>
-          <%
-            var categories = [];
-            site.categories.forEach(function(category){
-              categories.push('<a href="' + config.root + category.path + '">' + category.name + '</a>');
-            });
-          %>
-          <div class="categories">
-            <%- categories.join(', ') %>
-          </div>
+            <% site.categories.forEach(function(category){ %>
+                <li class="menu-item">
+                    <span>
+                        <a href="/<%- category.path %>"><%- category.name %>(<%- category.length %>)</a>
+                    </span>
+                </li>
+            <% }); %>
         <% } %>
 	</ul>
 </div>
