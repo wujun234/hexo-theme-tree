@@ -1,0 +1,20 @@
+header:
+  menu:
+    about: Hakkında
+    tags: Etikeletler
+    categories: Kategoriler
+
+sidebar:
+  site-toc:
+    search: Aramak için Enter'a basın
+
+about:
+  title: Hakkında
+
+categories:
+  title: Kategoriler
+  counts: Toplam
+
+tags:
+  title: Etikeletler
+  counts: Toplam

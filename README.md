@@ -262,7 +262,7 @@ $(document).ready(function () {
 - 小试牛刀，目前就搜索框和导航栏有文字
 ```
 # support language
-# default en， can select from [en, zh-Hans]
+# default en， can select from [en, zh-Hans, tr]
 language: zh-Hans
 ```
 
