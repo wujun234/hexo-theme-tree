@@ -6,15 +6,29 @@
 </h3>
 
 <div id="article-content">
-	<ul>
+    <% if (theme.style && theme.style.categories && theme.style.categories.display=="line") { %>
         <% if (site.categories && site.categories.length) { %>
-            <% site.categories.forEach(function(category){ %>
-                <li class="menu-item">
-                    <span>
-                        <a href="/<%- category.path %>"><%- category.name %>(<%- category.length %>)</a>
-                    </span>
-                </li>
-            <% }); %>
+          <%
+            var categories = [];
+            site.categories.forEach(function(category){
+              categories.push('<a href="' + config.root + category.path + '">' + category.name + '</a>');
+            });
+          %>
+          <div class="categories">
+            <%- categories.join(', ') %>
+          </div>
         <% } %>
-	</ul>
+    <% } else { %>
+        <ul>
+            <% if (site.categories && site.categories.length) { %>
+                <% site.categories.forEach(function(category){ %>
+                    <li class="menu-item">
+                        <span>
+                            <a href="/<%- category.path %>"><%- category.name %>(<%- category.length %>)</a>
+                        </span>
+                    </li>
+                <% }); %>
+            <% } %>
+        </ul>
+    <% } %>
 </div>

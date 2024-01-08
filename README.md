@@ -148,7 +148,13 @@ layout: "tags"
 ```
 tags: true
 ```
-
+如果想让 tags 页展示在一列，可以添加配置
+```
+style:
+    tags:
+        # support line, list; default list
+        display: line
+```
 ### categories 页
 在 `source` 路径下，与 `_posts` 文件夹平行，建立一个 `categories` 页
 
@@ -168,6 +174,13 @@ layout: "categories"
 修改 `hexo` 根目录中的 `_config.yml`，添加
 ```
 categories: true
+```
+如果想让 categories 页展示在一列，可以添加配置
+```
+style:
+    categories:
+        # support line, list; default list
+        display: line
 ```
 
 ## 2 文章树、目录树
