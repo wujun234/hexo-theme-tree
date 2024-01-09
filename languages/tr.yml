@@ -1,7 +1,7 @@
 header:
   menu:
-    about: Hakkında
-    tags: Etikeletler
+    about: Hakkımda
+    tags: Etiketler
     categories: Kategoriler
 
 sidebar:
@@ -9,12 +9,12 @@ sidebar:
     search: Aramak için Enter'a basın
 
 about:
-  title: Hakkında
+  title: Hakkımda
 
 categories:
   title: Kategoriler
   counts: Toplam
 
 tags:
-  title: Etikeletler
+  title: Etiketler
   counts: Toplam
