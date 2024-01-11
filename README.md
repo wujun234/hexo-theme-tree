@@ -57,8 +57,8 @@ links:
 
 ####### sidebar #####
 sidebar:
-    # name for left sidebar post list. ture: title name; false: file name
-    usePostTitle: ture
+    # name for left sidebar post list. true: title name; false: file name
+    usePostTitle: true
 
 ####### plug-in #####
 # optional, giscus comment
