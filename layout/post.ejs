@@ -65,7 +65,7 @@
         <div class="item right">
             <% if (page.next){ %>
               <a href="<%- url_for(page.next.path) %>">
-                <%- page.next.title || page.next.slug.split("/")[page.prev.slug.split("/").length-1] %>
+                <%- page.next.title || page.next.slug.split("/")[page.next.slug.split("/").length-1] %>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             <% } %>
