@@ -358,6 +358,10 @@ table td {
 	border: 1px solid black;
 }
 
+figure{
+    overflow:auto
+}
+
 .post-guide{
 	display: -webkit-box;
 	display: -moz-box;
