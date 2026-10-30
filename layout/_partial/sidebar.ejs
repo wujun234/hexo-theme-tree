@@ -48,14 +48,10 @@
 					input.sort(function(a, b){
 						var len = a.title.length <= b.title.length ? a.title.length : b.title.length;
 						for ( var i = 0; i < len; i++ ) {
-							res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
+							var res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
 							if ( res ) { return res }
 						}
-						if(a.title.length <= b.title.length){
-							return true;
-						}else{
-							return false;
-						}
+						return a.title.length - b.title.length;
 					});
 
 					<!-- 循环输出 html 结构 -->
