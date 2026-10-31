@@ -18,3 +18,13 @@ categories:
 tags:
   title: Etiketler
   counts: Toplam
+
+counter:
+  site_pv: Toplam görüntüleme
+  post_pv: Görüntüleme
+
+goatcounter:
+  site_code_required: "goatcounter.site_code boş bırakılamaz: sayaçları açmak için GoatCounter site kodunu doldurun."
+
+check_config_error:
+  exclusive: "Bunlardan yalnızca biri etkinleştirilebilir: %s."

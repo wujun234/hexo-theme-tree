@@ -4,9 +4,14 @@
 
 <!-- meta -->
 <div class="article-meta">
+	<% if (theme.goatcounter && theme.goatcounter.post_counter){ %>
+		<span>
+			<%= __('counter.post_pv') %>:<span class="goatcounter_visitors">--</span>
+		</span>
+	<% } %>
 	<% if (theme.valine && theme.valine.enableCounter){ %>
 		<span>
-			阅读量:<span id="<%= url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>"></span>
+			<%= __('counter.post_pv') %>:<span id="<%= url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>"></span>
 		</span>
 	<% } %>
 
@@ -93,6 +98,26 @@
           crossorigin="anonymous"
           async>
   </script>
+<% } %>
+
+<!-- goatcounter -->
+<%# With site_counter on, head loads count.js on every page; only add the tracker here when post_counter is on while site_counter is off. %>
+<% if (theme.goatcounter && theme.goatcounter.post_counter && !theme.goatcounter.site_counter){ %>
+	<script data-goatcounter="https://<%- theme.goatcounter.site_code %>.goatcounter.com/count"
+	        async src="//gc.zgo.at/count.js"></script>
+<% } %>
+<% if (theme.goatcounter && theme.goatcounter.post_counter){ %>
+	<script>
+		// post view count
+		(function () {
+			var el = document.querySelector('.goatcounter_visitors');
+			if (!el) return;
+			fetch('https://<%- theme.goatcounter.site_code %>.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
+				.then(function (res) { return res.json(); })
+				.then(function (data) { if (data && data.count) el.textContent = data.count; })
+				.catch(function (err) { console.error('goatcounter post count:', err); });
+		})();
+	</script>
 <% } %>
 
 <!-- comment - valine -->

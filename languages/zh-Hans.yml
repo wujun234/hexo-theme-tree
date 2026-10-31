@@ -18,3 +18,13 @@ categories:
 tags:
   title: 标签
   counts: 总计
+
+counter:
+  site_pv: 总访问量
+  post_pv: 阅读量
+
+goatcounter:
+  site_code_required: "没填 goatcounter.site_code：开了统计就要填 GoatCounter 的 site code。"
+
+check_config_error:
+  exclusive: "%s，只能开启一个。"

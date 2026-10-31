@@ -81,6 +81,14 @@ giscus:
     input_position: "top"
     theme: "preferred_color_scheme"
     lang: "en"
+# optional, GoatCounter, statistics of visits
+goatcounter:
+    # Site code is the <site-code> in https://<site-code>.goatcounter.com
+    site_code:
+    # track every page and show the total in the footer
+    site_counter: false
+    # show the view count on post pages
+    post_counter: false
 # optional, valine
 valine:
     enableComment: false
@@ -201,7 +209,7 @@ sidebar:
     usePostTitle: true
 ```
 
-## 3 评论框
+## 3 评论与访问统计
 ### Giscus
 - 如果要使用 `giscus` 评论系统，需要在 `hexo` 根目录中的 `_config.yml`，填写 `giscus` 配置
 - 配置页面：https://giscus.app
@@ -223,7 +231,30 @@ giscus:
     lang: "zh-CN"
 ```
 
+### GoatCounter
+
+- 如果想统计访问量，可以用 GoatCounter。它把计数托管在 goatcounter.com，统计脚本是一个公开的 JS，数据可以在线看，也可以随时导出。
+- 在 <https://www.goatcounter.com/signup> 注册，GoatCounter 的 site code 就是访问地址的子域名：`https://<site-code>.goatcounter.com`。
+- 注册后要在 GoatCounter 的设置里打开 `Allow adding visitor counts on your website`，否则文章页拿不到计数。
+- 配置：
+
+```
+# optional, GoatCounter
+goatcounter:
+    site_code: <site-code>
+    # 统计全站，页脚显示总访问量
+    site_counter: true
+    # 文章页显示阅读量
+    post_counter: true
+```
+
+- `site_counter` 打开后所有页面都会上报给 GoatCounter，页脚也会显示总访问量；`post_counter` 打开后文章页才会显示阅读量。两个可以独立开关，比如只想要全站统计，就把 `post_counter` 设成 false。
+- GoatCounter 默认按 visit 计数，同一个路径 8 小时内只算一次；想要接近页面浏览（PV）的口径，可以在它的设置里关掉 sessions。
+
 ### Valine
+
+> 注意：LeanCloud 将于 2027-01-12 停服，Valine 的评论和阅读量都依赖 LeanCloud，慎用。
+
 - 如果要使用 `valine` 的评论及阅读量功能，需要在 `hexo` 根目录中的 `_config.yml` 文件中，填写自己申请的 `leancloud` 账户下面的 `appID` 和 `appKey`，并且分别设置为 true
 - 默认是不使用，false
 
@@ -279,7 +310,7 @@ $(document).ready(function () {
 
 ## 6 国际化（i18n）
 - 国际化：需要在 `hexo` 根目录的 `_config.yml`，需要修改 `language` 相关配置
-- 小试牛刀，目前就搜索框和导航栏有文字
+- 小试牛刀，目前搜索框、导航栏和配置检查的报错有文字
 ```
 # support language
 # default en， can select from [en, zh-Hans, tr]
