@@ -60,6 +60,13 @@ sidebar:
     # name for left sidebar post list. true: title name; false: file name
     usePostTitle: true
 
+    # Prefix for each entry, HTML allowed
+    # The default is a solid circle: '<i class="fa fa-circle" aria-hidden="true"></i>'
+    # You may set the prefix to `#`:
+    # headerPrefix: '<span>#</span>'
+    # You may also remove the prefix:
+    # headerPrefix: '<span></span>'
+
 ####### plug-in #####
 # optional, giscus comment
 # get generated configurations from https://giscus.app/
