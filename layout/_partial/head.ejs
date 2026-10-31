@@ -48,6 +48,14 @@
 		}
 	</script>
 
+	<%
+		var headerPrefix = (theme.sidebar && theme.sidebar.headerPrefix != null)
+			? theme.sidebar.headerPrefix
+			: '<i class="fa fa-circle" aria-hidden="true"></i>';
+	%>
+	<script>
+		var headerPrefix = <%- JSON.stringify(headerPrefix) %>;
+	</script>
 
 	<%- css('css/main.css') %>
 	<%- css('https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css') %>
