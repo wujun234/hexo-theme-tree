@@ -160,7 +160,7 @@ a {
 	white-space: nowrap;
 }
 #sidebar ul li a,
-#sidebar ul li span {
+.article-toc li > span {
 	color: #999;
 	font-size: 14px;
 }

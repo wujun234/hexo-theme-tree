@@ -60,12 +60,12 @@ sidebar:
     # name for left sidebar post list. true: title name; false: file name
     usePostTitle: true
 
-    # Prefix for each entry, HTML allowed
+    # Prefix for each entry of the article table of contents, HTML allowed.
     # The default is a solid circle: '<i class="fa fa-circle" aria-hidden="true"></i>'
     # You may set the prefix to `#`:
     # headerPrefix: '<span>#</span>'
-    # You may also remove the prefix:
-    # headerPrefix: '<span></span>'
+    # You may also remove the prefix with an empty string:
+    # headerPrefix: ''
 
 ####### plug-in #####
 # optional, giscus comment
