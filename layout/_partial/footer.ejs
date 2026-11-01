@@ -8,6 +8,13 @@
 	    <a href="/"><%- config.author %></a>
 	<% } %>
 	
+	<% if (theme.goatcounter && theme.goatcounter.site_counter){ %>
+		|
+		<span id="goatcounter_container_site_pv">
+			<%= __('counter.site_pv') %>
+			<span id="goatcounter_value_site_pv">--</span>
+		</span>
+	<% } %>
 	<% if (theme.busuanzi){ %>
 		|
 		<span id="busuanzi_container_site_pv">
@@ -35,6 +42,18 @@
 <script type="text/javascript">
 	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
 </script>
+<% if (theme.goatcounter && theme.goatcounter.site_counter){ %>
+<script type="text/javascript">
+	(function () {
+		var el = document.getElementById('goatcounter_value_site_pv');
+		if (!el) return;
+		fetch('https://<%- theme.goatcounter.site_code %>.goatcounter.com/counter/TOTAL.json')
+			.then(function (res) { return res.json(); })
+			.then(function (data) { if (data && data.count) el.textContent = data.count; })
+			.catch(function (err) { console.error('goatcounter total:', err); });
+	})();
+</script>
+<% } %>
 <% if (config.mermaid && config.mermaid.enable) { %>
     <script src='https://unpkg.com/mermaid@<%= config.mermaid.version %>/dist/mermaid.min.js'></script>
     <script>

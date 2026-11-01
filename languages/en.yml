@@ -18,3 +18,13 @@ categories:
 tags:
   title: Tags
   counts: Total
+
+counter:
+  site_pv: Total views
+  post_pv: Views
+
+goatcounter:
+  site_code_required: "goatcounter.site_code is empty; fill in your GoatCounter site code to enable the counters."
+
+check_config_error:
+  exclusive: "Only one of these can be enabled: %s."

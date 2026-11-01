@@ -68,6 +68,10 @@
 	<%- js('https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js') %>
 	<%- js('js/main.js') %>
 
+	<% if (theme.goatcounter && theme.goatcounter.site_counter){ %>
+		<script data-goatcounter="https://<%- theme.goatcounter.site_code %>.goatcounter.com/count"
+		        async src="//gc.zgo.at/count.js"></script>
+	<% } %>
 	<% if (theme.valine){ %>
 		<%- js('https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js') %>
 		<%- js('https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js') %>
